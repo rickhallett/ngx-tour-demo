@@ -3,6 +3,15 @@
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build --prod",
+    "ghb": "ng build --prod --baseHref='https://rickhallett.githib.io/universal-paperclips/'",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
   "dependencies": {
     "@angular/animations": "^5.2.0",
     "@angular/cdk": "^5.2.5",
@@ -206,13 +215,5 @@
     "ts-loader": "^4.1.0",
     "tslint-config-standard": "^6.0.1",
     "webpack": "^3.0.0"
-  },
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
   }
 }
