@@ -9,7 +9,7 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
 import { SimpleFormComponent } from "./simple-form/simple-form.component";
 import { ComplexFormComponent } from "./complex-form/complex-form.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { ContentComponent } from './content/content.component';
+import { Router } from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -18,7 +18,6 @@ import { ContentComponent } from './content/content.component';
     SidebarComponent,
     SimpleFormComponent,
     ComplexFormComponent,
-    ContentComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,4 +28,8 @@ import { ContentComponent } from './content/content.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(router: Router) {
+    console.log("Routes: ", JSON.stringify(router.config, undefined, 2));
+  }
+}
