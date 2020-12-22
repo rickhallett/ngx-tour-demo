@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { HomeComponent } from "../app/home/home.component";
 import { AppComponent } from "./app.component";
+import { ChartComponent } from './chart/chart.component';
 import { ComplexFormComponent } from "./complex-form/complex-form.component";
 import { SimpleFormComponent } from "./simple-form/simple-form.component";
 
@@ -11,6 +12,10 @@ const routes: Routes = [
     path: "",
     component: HomeComponent,
     children: [
+      {
+        path: "chart",
+        component: ChartComponent
+      },
       {
         path: "simple-form",
         component: SimpleFormComponent,

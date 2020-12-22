@@ -10,6 +10,7 @@ import { SimpleFormComponent } from "./simple-form/simple-form.component";
 import { ComplexFormComponent } from "./complex-form/complex-form.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { Router } from "@angular/router";
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { Router } from "@angular/router";
     SidebarComponent,
     SimpleFormComponent,
     ComplexFormComponent,
+    ChartComponent,
   ],
   imports: [
     BrowserModule,
