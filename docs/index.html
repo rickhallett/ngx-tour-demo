@@ -11,7 +11,7 @@
   </head>
   <body>
     <app-root></app-root>
-  </body>
+  <script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
 
   <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -22,16 +22,13 @@
     crossorigin="anonymous"
   ></script>
   <script>
-    // window.jQuery ||
-    //   document.write(
-    //     '<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>'
-    //   );
+    window.jQuery ||
+      document.write(
+        '<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>'
+      );
   </script>
-  <script
-    type="text/javascript"
-    src="http://localhost:3000/assets/js/popper.min.js"
-  ></script>
-  <script src="http://localhost:3000/assets/js/bootstrap.min.js"></script>
+  <script src="../../assets/js/vendor/popper.min.js"></script>
+  <script src="../../dist/js/bootstrap.min.js"></script>
 
   <!-- Icons -->
   <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
