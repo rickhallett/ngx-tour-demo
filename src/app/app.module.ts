@@ -10,7 +10,7 @@ import { SimpleFormComponent } from "./simple-form/simple-form.component";
 import { ComplexFormComponent } from "./complex-form/complex-form.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { Router } from "@angular/router";
-import { ChartComponent } from './chart/chart.component';
+import { ChartComponent } from "./chart/chart.component";
 
 @NgModule({
   declarations: [
@@ -32,6 +32,6 @@ import { ChartComponent } from './chart/chart.component';
 })
 export class AppModule {
   constructor(router: Router) {
-    console.log("Routes: ", JSON.stringify(router.config, undefined, 2));
+    // console.log("Routes: ", JSON.stringify(router.config, undefined, 2));
   }
 }
