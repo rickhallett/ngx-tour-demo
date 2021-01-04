@@ -20,6 +20,10 @@ import { CustomersComponent } from "./customer/customer.component";
 import { IntegrationsComponent } from "./integration/integration.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { ReportsComponent } from "./reports/reports.component";
+import { PricingComponent } from './pricing/pricing.component';
+import { AlbumComponent } from './album/album.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { CoverComponent } from './cover/cover.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,10 @@ import { ReportsComponent } from "./reports/reports.component";
     IntegrationsComponent,
     NotFoundComponent,
     ReportsComponent,
+    PricingComponent,
+    AlbumComponent,
+    CheckoutComponent,
+    CoverComponent,
   ],
   imports: [
     BrowserModule,
