@@ -24,6 +24,7 @@ import { PricingComponent } from './pricing/pricing.component';
 import { AlbumComponent } from './album/album.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CoverComponent } from './cover/cover.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { CoverComponent } from './cover/cover.component';
     AlbumComponent,
     CheckoutComponent,
     CoverComponent,
+    BlogComponent,
   ],
   imports: [
     BrowserModule,
