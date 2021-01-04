@@ -8,7 +8,6 @@ import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { SimpleFormComponent } from "./simple-form/simple-form.component";
-import { ComplexFormComponent } from "./complex-form/complex-form.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { Router } from "@angular/router";
 import { ChartComponent } from "./chart/chart.component";
@@ -17,14 +16,12 @@ import { DashComponent } from "./dash/dash.component";
 import { OrdersComponent } from "./order/order.component";
 import { ProductsComponent } from "./product/product.component";
 import { CustomersComponent } from "./customer/customer.component";
-import { IntegrationsComponent } from "./integration/integration.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
-import { ReportsComponent } from "./reports/reports.component";
-import { PricingComponent } from './pricing/pricing.component';
-import { AlbumComponent } from './album/album.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { CoverComponent } from './cover/cover.component';
-import { BlogComponent } from './blog/blog.component';
+import { PricingComponent } from "./pricing/pricing.component";
+import { AlbumComponent } from "./album/album.component";
+import { CheckoutComponent } from "./checkout/checkout.component";
+import { CoverComponent } from "./cover/cover.component";
+import { BlogComponent } from "./blog/blog.component";
 
 @NgModule({
   declarations: [
@@ -32,16 +29,13 @@ import { BlogComponent } from './blog/blog.component';
     HomeComponent,
     SidebarComponent,
     SimpleFormComponent,
-    ComplexFormComponent,
     ChartComponent,
     NavbarComponent,
     DashComponent,
     OrdersComponent,
     ProductsComponent,
     CustomersComponent,
-    IntegrationsComponent,
     NotFoundComponent,
-    ReportsComponent,
     PricingComponent,
     AlbumComponent,
     CheckoutComponent,
