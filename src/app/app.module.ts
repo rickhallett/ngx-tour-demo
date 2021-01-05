@@ -4,12 +4,21 @@ import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from "@angular/forms";
 
+// import { GuidedTourModule, GuidedTourService } from "ngx-guided-tour";
+import { TourNgxBootstrapModule } from "ngx-tour-ngx-bootstrap"; // *required!
+import {
+  PopoverConfig,
+  ComponentLoaderFactory,
+  PositioningService,
+  PopoverContainerComponent,
+} from "ngx-bootstrap"; // *required!
+
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { SimpleFormComponent } from "./simple-form/simple-form.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { Router } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 import { ChartComponent } from "./chart/chart.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { DashComponent } from "./dash/dash.component";
@@ -22,6 +31,8 @@ import { AlbumComponent } from "./album/album.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { CoverComponent } from "./cover/cover.component";
 import { BlogComponent } from "./blog/blog.component";
+import { NgxBootstrapComponent } from "./ngx-bootstrap/ngx-bootstrap.component";
+import { NgxDocsComponent } from "./ngx-docs/ngx-docs.component";
 
 @NgModule({
   declarations: [
@@ -41,6 +52,9 @@ import { BlogComponent } from "./blog/blog.component";
     CheckoutComponent,
     CoverComponent,
     BlogComponent,
+    NgxBootstrapComponent,
+    NgxDocsComponent, // *required!
+    PopoverContainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,9 +62,18 @@ import { BlogComponent } from "./blog/blog.component";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    // GuidedTourModule,
+    RouterModule,
+    TourNgxBootstrapModule.forRoot(), // *required!
   ],
-  providers: [],
+  providers: [
+    // GuidedTourService,
+    PopoverConfig, // *required!
+    ComponentLoaderFactory, // *required!
+    PositioningService, // *required!
+  ],
   bootstrap: [AppComponent],
+  entryComponents: [PopoverContainerComponent], // *required!
 })
 export class AppModule {
   constructor(router: Router) {

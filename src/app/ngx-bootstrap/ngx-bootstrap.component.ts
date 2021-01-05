@@ -1,23 +1,24 @@
-import { Component, Inject, OnInit } from "@angular/core";
-import { DOCUMENT } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
 
-// import { GuidedTour, Orientation, GuidedTourService } from "ngx-guided-tour";
 import { TourService } from "ngx-tour-ngx-bootstrap";
-import { INgxbStepOption } from 'ngx-tour-ngx-bootstrap/step-option.interface';
+import { INgxbStepOption } from "ngx-tour-ngx-bootstrap/step-option.interface";
 
 interface TSINgxbStepOption extends INgxbStepOption {
   containerClass?: string;
 }
+
 interface TSINgxRoute {
   route: string;
 }
+
 @Component({
-  selector: "app-dash",
-  templateUrl: "./dash.component.html",
-  styleUrls: ["./dash.component.css"],
+  // selector: "ngx-bootstrap-route", ???
+  selector: "app-ngx-bootstrap",
+  templateUrl: "./ngx-bootstrap.component.html",
+  styleUrls: ["./ngx-bootstrap.component.css"],
 })
-export class DashComponent implements OnInit {
-  public dashSteps: TSINgxbStepOption[] = [
+export class NgxBootstrapComponent implements OnInit {
+  public demoSteps: TSINgxbStepOption[] = [
     {
       anchorId: "start.tour",
       content: "Welcome to the Ngx-Tour tour!",
@@ -61,7 +62,7 @@ export class DashComponent implements OnInit {
     {
       anchorId: "another.route",
       content: "Like this!",
-      route: "ngx-bootstrap/other",
+      route: "dash",
       title: "Another Route",
     },
     {
@@ -114,40 +115,16 @@ export class DashComponent implements OnInit {
     },
   ];
 
-  public dashTourRoute: TSINgxRoute = {
+  public demoRoute: TSINgxRoute = {
     route: "ngx-bootstrap",
   };
 
-  constructor(private tourService: TourService, @Inject(DOCUMENT) private dom) {
-    console.log('tourService', tourService);
+  constructor(private tourService: TourService) {
+    console.log("tourService", tourService);
   }
 
   ngOnInit() {
-    this.tourService.initialize(this.dashSteps, this.dashTourRoute);
+    this.tourService.initialize(this.demoSteps, this.demoRoute);
     this.tourService.start();
   }
 }
-
-
-
-// ngx-guided-tour
-
-// export class DashComponent implements OnInit {
-
-//   public dashTour: GuidedTour = {
-//     tourId: 'dash',
-//     steps: []
-//   }
-
-//   constructor(
-//     private guidedTourService: GuidedTourService,
-//     @Inject(DOCUMENT) private dom
-//   ) {
-//     console.log(dom);
-//     console.log(guidedTourService);
-//   }
-
-//   ngOnInit() {
-//     this.guidedTourService.startTour(this.dashTour);
-//   }
-// }

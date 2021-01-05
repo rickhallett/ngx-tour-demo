@@ -8,6 +8,8 @@ import { ChartComponent } from "./chart/chart.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { CustomersComponent } from "./customer/customer.component";
 import { DashComponent } from "./dash/dash.component";
+import { NgxBootstrapComponent } from './ngx-bootstrap/ngx-bootstrap.component';
+import { NgxDocsComponent } from './ngx-docs/ngx-docs.component';
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { OrdersComponent } from "./order/order.component";
 import { PricingComponent } from "./pricing/pricing.component";
@@ -54,6 +56,14 @@ const routes: Routes = [
         path: "blog",
         component: BlogComponent,
       },
+      {
+        path: "ngx-bootstrap",
+        component: NgxBootstrapComponent
+      },
+      {
+        path: "ngx-docs",
+        component: NgxDocsComponent
+      }
     ],
   },
   {
