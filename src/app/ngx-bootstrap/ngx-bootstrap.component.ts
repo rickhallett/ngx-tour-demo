@@ -116,7 +116,7 @@ export class NgxBootstrapComponent implements OnInit {
   ];
 
   public demoRoute: TSINgxRoute = {
-    route: "ngx-bootstrap",
+    route: "dash",
   };
 
   constructor(public tourService: TourService) {

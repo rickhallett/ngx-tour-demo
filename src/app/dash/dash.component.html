@@ -1,5 +1,19 @@
 <div class="wrapper">
   <div class="main-panel">
+    <a
+  href="https://github.com/isaacplmann/ngx-tour"
+  rel="nofollow"
+  target="_blank"
+  class="btn btn-default"
+  >View on GitHub</a
+>
+<a
+  style="cursor: pointer"
+  (click)="tourService.toggle()"
+  class="btn btn-primary"
+  tourAnchor="start.tour"
+  >Start Demo Tour</a
+>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
       <div class="container-fluid">
@@ -83,7 +97,7 @@
                 data-toggle="dropdown"
               >
                 <div class="photo">
-                  <img src="../assets/img/anime3.png" alt="Profile Photo" />
+                  <img src="" alt="Profile Photo" />
                 </div>
                 <b class="caret d-none d-lg-block d-xl-block"></b>
                 <p class="d-lg-none">Log out</p>
@@ -651,5 +665,4 @@
   </div>
 </div>
 
-<!-- <ngx-guided-tour></ngx-guided-tour> -->
-<tour-step-template></tour-step-template>
+<!-- <tour-step-template></tour-step-template> -->

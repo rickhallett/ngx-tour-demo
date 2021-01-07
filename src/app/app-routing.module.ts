@@ -57,15 +57,19 @@ const routes: Routes = [
         component: BlogComponent,
       },
       {
-        path: "ngx-bootstrap",
-        component: NgxBootstrapComponent,
-        children: [
-        {
-          path: "",
-          component: NgxDocsComponent
-        }
-      ]
+        path: "docs",
+        component: NgxDocsComponent
       },
+      // {
+      //   path: "ngx-bootstrap",
+      //   component: NgxBootstrapComponent,
+      //   // children: [
+      //   //   {
+      //   //     path: "",
+      //   //     component: NgxDocsComponent
+      //   //   }
+      //   // ]
+      // },
     ],
   },
   {
