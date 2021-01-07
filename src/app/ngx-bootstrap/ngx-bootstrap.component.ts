@@ -119,7 +119,7 @@ export class NgxBootstrapComponent implements OnInit {
     route: "ngx-bootstrap",
   };
 
-  constructor(private tourService: TourService) {
+  constructor(public tourService: TourService) {
     console.log("tourService", tourService);
   }
 

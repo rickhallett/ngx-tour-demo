@@ -13,6 +13,8 @@ import {
   PopoverContainerComponent,
 } from "ngx-bootstrap"; // *required!
 
+import { NgxBootstrapModule } from './ngx-bootstrap.module';
+
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
@@ -52,8 +54,8 @@ import { NgxDocsComponent } from "./ngx-docs/ngx-docs.component";
     CheckoutComponent,
     CoverComponent,
     BlogComponent,
-    NgxBootstrapComponent,
-    NgxDocsComponent, // *required!
+    // NgxBootstrapComponent,
+    // NgxDocsComponent, // *required!
     PopoverContainerComponent,
   ],
   imports: [
@@ -64,6 +66,7 @@ import { NgxDocsComponent } from "./ngx-docs/ngx-docs.component";
     HttpClientModule,
     // GuidedTourModule,
     RouterModule,
+    NgxBootstrapModule,
     TourNgxBootstrapModule.forRoot(), // *required!
   ],
   providers: [

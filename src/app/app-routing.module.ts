@@ -58,12 +58,14 @@ const routes: Routes = [
       },
       {
         path: "ngx-bootstrap",
-        component: NgxBootstrapComponent
+        component: NgxBootstrapComponent,
+        children: [
+        {
+          path: "",
+          component: NgxDocsComponent
+        }
+      ]
       },
-      {
-        path: "ngx-docs",
-        component: NgxDocsComponent
-      }
     ],
   },
   {
