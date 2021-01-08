@@ -1,7 +1,7 @@
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, Inject, OnDestroy, OnInit } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 
-import { TourService } from "ngx-tour-ngx-bootstrap";
+import { IStepOption, TourService } from "ngx-tour-ngx-bootstrap";
 import { INgxbStepOption } from 'ngx-tour-ngx-bootstrap/step-option.interface';
 
 interface TSINgxbStepOption extends INgxbStepOption {
@@ -17,12 +17,12 @@ interface TSINgxRoute {
   templateUrl: "./dash.component.html",
   styleUrls: ["./dash.component.css"],
 })
-export class DashComponent implements OnInit {
+export class DashComponent implements OnInit, OnDestroy {
   public dashSteps: TSINgxbStepOption[] = [
     {
       anchorId: "start.tour",
       content: "Welcome to the Ngx-Tour tour!",
-      placement: "right",
+      placement: "auto",
       title: "Welcome",
     },
     {
@@ -33,30 +33,29 @@ export class DashComponent implements OnInit {
       title: "angular-ui-tour",
     },
     {
-      anchorId: "installation",
+      anchorId: "usage",
       route: "docs",
-      content: "Re-routing is easy with ngx-tour",
+      content: "Energy management is everything",
       placement: "bottom",
-      title: "Welcome Back!",
-      nextStep: 3
+      title: "Empty your cup"
     },
     {
-      anchorId: "config.route",
-      route: "docs",
-      content: "And then back again.",
-      placement: "bottom",
+      anchorId: "dash.shipments",
+      route: "dash",
+      content: "We provide both ethical and unethical shipments globaally",
       title: "Route Return",
     },
     {
-      anchorId: "usage",
+      anchorId: "notifications",
+      route: "dash",
       content: "...then use it.",
-      placement: "right",
-      title: "Usage",
+      placement: "auto",
+      title: "notifications",
     },
     {
       anchorId: "tourService.start",
       content: "Don't forget to actually start the tour.",
-      placement: "top",
+      placement: "auto",
       title: "Start the tour",
     },
     {
@@ -140,7 +139,44 @@ export class DashComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.tourService.initialize$.subscribe((steps: IStepOption[]) => {
+      console.log('tour configured with these steps:', steps);
+    });
+
     this.tourService.initialize(this.dashSteps, this.dashTourRoute);
+
+    
+
+    this.tourService.start$.subscribe((step: IStepOption) => {
+      console.log('tour start:', step);
+    });
+
+    this.tourService.end$.subscribe((step: any) => {
+      console.log('tour end:', step);
+    });
+
+    this.tourService.stepShow$.subscribe((step: IStepOption) => {
+      console.log('step shown:', step);
+    });
+
+    this.tourService.anchorRegister$.subscribe((anchor: string) => {
+      console.log('anchor registered:', anchor);
+    });
+
+    this.tourService.anchorUnregister$.subscribe((sanchor: string) => {
+      console.log('anchor unregistered:', sanchor);
+    });
+
     this.tourService.start();
+  }
+
+  // TODO: leaving the component is destroying tourService initialisation casuing routes to fail
+  /**
+   * 1. remove steps away as they are used with some kind of hook
+   * 2. create a higher level initialisation of the steps in app root
+   * 3. preserve the tourService in some way...static class?....global state?
+   */
+  ngOnDestroy() {
+    console.log('dash component destroyed - this might re-initialise tour...!')
   }
 }
