@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     {
       anchorId: "start.tour",
       content: "Welcome to the Ngx-Tour tour!",
-      placement: "auto",
+      placement: "right",
       title: "Welcome",
     },
     {
@@ -38,6 +38,13 @@ export class HomeComponent implements OnInit {
       route: "docs",
       content: "Energy management is everything",
       placement: "bottom",
+      title: "Empty your cup"
+    },
+    {
+      anchorId: "usage",
+      route: "docs",
+      content: "Energy management is everything",
+      placement: "left",
       title: "Empty your cup"
     },
     {

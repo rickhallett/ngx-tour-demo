@@ -35,8 +35,8 @@ html {
 .custom-tour-class,
 .custom-tour-class .popover-header,
 .custom-tour-class .popover-body {
-  color: #fff;
-  background-color: #333;
+  color: #eee;
+  background-color: #000 !important;
   border-color: #333;
 }
 .custom-tour-class .popover-arrow:before,

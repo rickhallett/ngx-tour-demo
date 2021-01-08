@@ -4,16 +4,9 @@ import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from "@angular/forms";
 
-// import { GuidedTourModule, GuidedTourService } from "ngx-guided-tour";
-import { TourNgxBootstrapModule } from "ngx-tour-ngx-bootstrap"; // *required!
-// import {
-//   PopoverConfig,
-//   ComponentLoaderFactory,
-//   PositioningService,
-//   PopoverContainerComponent,
-// } from "ngx-bootstrap"; // *required!
+import { TourNgxBootstrapModule } from "ngx-tour-ngx-bootstrap";
 
-import { PopoverContainerComponent, PopoverModule, PopoverConfig, ComponentLoaderFactory, PositioningService } from "ngx-bootstrap";
+import { PopoverModule, PopoverConfig, ComponentLoaderFactory, PositioningService } from "ngx-bootstrap";
 
 import { NgxBootstrapModule } from './ngx-bootstrap.module';
 
@@ -22,7 +15,7 @@ import { HomeComponent } from "./home/home.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { SimpleFormComponent } from "./simple-form/simple-form.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { Router, RouterModule } from "@angular/router";
+import { Router } from "@angular/router";
 import { ChartComponent } from "./chart/chart.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { DashComponent } from "./dash/dash.component";
@@ -58,7 +51,6 @@ import { NgxDocsComponent } from "./ngx-docs/ngx-docs.component";
     BlogComponent,
     // NgxBootstrapComponent,
     // NgxDocsComponent, // *required!
-    // PopoverContainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,23 +58,20 @@ import { NgxDocsComponent } from "./ngx-docs/ngx-docs.component";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // GuidedTourModule,
-    RouterModule,
     NgxBootstrapModule,
     PopoverModule,
     TourNgxBootstrapModule.forRoot(), // *required!
   ],
   providers: [
-    // GuidedTourService,
-    PopoverConfig, // *required!
-    ComponentLoaderFactory, // *required!
-    PositioningService, // *required!
+    PopoverConfig,
+    ComponentLoaderFactory,
+    PositioningService,
   ],
   bootstrap: [AppComponent],
   // entryComponents: [PopoverContainerComponent], // *required!
 })
 export class AppModule {
   constructor(router: Router) {
-    // console.log("Routes: ", JSON.stringify(router.config, undefined, 2));
+    console.log("Routes: ", JSON.stringify(router.config, null, 8));
   }
 }

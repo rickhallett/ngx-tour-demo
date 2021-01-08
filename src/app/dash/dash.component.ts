@@ -1,16 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit } from "@angular/core";
-import { DOCUMENT } from "@angular/common";
-
-import { IStepOption, TourService } from "ngx-tour-ngx-bootstrap";
-import { INgxbStepOption } from 'ngx-tour-ngx-bootstrap/step-option.interface';
-
-interface TSINgxbStepOption extends INgxbStepOption {
-  containerClass?: string;
-}
-
-interface TSINgxRoute {
-  route: string;
-}
+import { Component, OnDestroy, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-dash",
