@@ -6,12 +6,14 @@ import { FormsModule } from "@angular/forms";
 
 // import { GuidedTourModule, GuidedTourService } from "ngx-guided-tour";
 import { TourNgxBootstrapModule } from "ngx-tour-ngx-bootstrap"; // *required!
-import {
-  PopoverConfig,
-  ComponentLoaderFactory,
-  PositioningService,
-  PopoverContainerComponent,
-} from "ngx-bootstrap"; // *required!
+// import {
+//   PopoverConfig,
+//   ComponentLoaderFactory,
+//   PositioningService,
+//   PopoverContainerComponent,
+// } from "ngx-bootstrap"; // *required!
+
+import { PopoverContainerComponent, PopoverModule, PopoverConfig, ComponentLoaderFactory, PositioningService } from "ngx-bootstrap";
 
 import { NgxBootstrapModule } from './ngx-bootstrap.module';
 
@@ -56,7 +58,7 @@ import { NgxDocsComponent } from "./ngx-docs/ngx-docs.component";
     BlogComponent,
     // NgxBootstrapComponent,
     // NgxDocsComponent, // *required!
-    PopoverContainerComponent,
+    // PopoverContainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +69,7 @@ import { NgxDocsComponent } from "./ngx-docs/ngx-docs.component";
     // GuidedTourModule,
     RouterModule,
     NgxBootstrapModule,
+    PopoverModule,
     TourNgxBootstrapModule.forRoot(), // *required!
   ],
   providers: [
@@ -76,7 +79,7 @@ import { NgxDocsComponent } from "./ngx-docs/ngx-docs.component";
     PositioningService, // *required!
   ],
   bootstrap: [AppComponent],
-  entryComponents: [PopoverContainerComponent], // *required!
+  // entryComponents: [PopoverContainerComponent], // *required!
 })
 export class AppModule {
   constructor(router: Router) {

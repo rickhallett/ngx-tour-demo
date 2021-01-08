@@ -31,3 +31,15 @@ html {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+
+.custom-tour-class,
+.custom-tour-class .popover-header,
+.custom-tour-class .popover-body {
+  color: #fff;
+  background-color: #333;
+  border-color: #333;
+}
+.custom-tour-class .popover-arrow:before,
+.custom-tour-class .popover-arrow:after {
+  border-top-color: #333 !important;
+}

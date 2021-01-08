@@ -19,7 +19,6 @@ interface TSINgxRoute {
 })
 export class DashComponent implements OnInit, OnDestroy {
   
-
   ngOnInit() {}
 
   ngOnDestroy() {
