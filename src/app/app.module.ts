@@ -6,7 +6,6 @@ import { FormsModule } from "@angular/forms";
 
 import { TourNgxBootstrapModule } from "ngx-tour-ngx-bootstrap";
 import { PopoverModule, PopoverConfig, ComponentLoaderFactory, PositioningService } from "ngx-bootstrap";
-import { NgxBootstrapModule } from './ngx-bootstrap.module';
 
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
@@ -49,8 +48,8 @@ import { RepositionPopupService } from "./reposition-popup.service";
     CheckoutComponent,
     CoverComponent,
     BlogComponent,
-    // NgxDocsComponent, // TODO: bring library module into here
-    // NgxBootstrapComponent
+    NgxDocsComponent, // TODO: bring library module into here
+    NgxBootstrapComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +57,6 @@ import { RepositionPopupService } from "./reposition-popup.service";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxBootstrapModule,
     PopoverModule,
     TourNgxBootstrapModule.forRoot(),
   ],
