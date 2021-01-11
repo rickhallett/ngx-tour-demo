@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from "@angular/forms";
 
 import { TourNgxBootstrapModule } from "ngx-tour-ngx-bootstrap";
-import { PopoverModule, PopoverConfig, ComponentLoaderFactory } from "ngx-bootstrap";
+import { PopoverModule, PopoverConfig, ComponentLoaderFactory, PositioningService } from "ngx-bootstrap";
 import { NgxBootstrapModule } from './ngx-bootstrap.module';
 
 import { AppComponent } from "./app.component";
@@ -29,7 +29,7 @@ import { BlogComponent } from "./blog/blog.component";
 import { NgxBootstrapComponent } from "./ngx-bootstrap/ngx-bootstrap.component";
 import { NgxDocsComponent } from "./ngx-docs/ngx-docs.component";
 
-// import { RepositionService } from "./reposition.service";
+import { RepositionPopupService } from "./reposition-popup.service";
 
 @NgModule({
   declarations: [
@@ -65,8 +65,8 @@ import { NgxDocsComponent } from "./ngx-docs/ngx-docs.component";
   providers: [
     PopoverConfig,
     ComponentLoaderFactory,
-    // TODO: is it worth looking at the source code of this service in terms of TS design patterns?
-    // RepositionService
+    PositioningService,
+    RepositionPopupService
   ],
   bootstrap: [AppComponent],
 })

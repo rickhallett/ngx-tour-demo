@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { RepositionService } from '../reposition.service';
+import { RepositionPopupService } from '../reposition-popup.service';
 
 @Component({
   selector: 'app-ngx-docs',
@@ -8,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NgxDocsComponent implements OnInit {
 
-  // constructor(private repositionService: RepositionService) {
+  // constructor(private repositionPopupService: RepositionPopupService) {
 
   // }
 
   ngOnInit() {
-    // console.log('/docs positionService:', this.repositionService)
+    // console.log('/docs repositionPopupService:', this.repositionPopupService)
   }
 
 }

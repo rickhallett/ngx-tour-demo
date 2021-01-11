@@ -20,7 +20,7 @@ type Node = {
 }
 
 @Injectable()
-export class RepositionService {
+export class RepositionPopupService {
 
   constructor(private renderer: Renderer2, @Inject(DOCUMENT) private dom) {
 

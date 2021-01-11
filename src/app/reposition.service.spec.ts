@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { RepositionService } from './reposition.service';
+import { RepositionPopupService } from './reposition-popup.service';
 
 describe('RepositionService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [RepositionService]
+      providers: [RepositionPopupService]
     });
   });
 
-  it('should be created', inject([RepositionService], (service: RepositionService) => {
+  it('should be created', inject([RepositionPopupService], (service: RepositionPopupService) => {
     expect(service).toBeTruthy();
   }));
 });
