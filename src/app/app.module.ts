@@ -5,9 +5,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from "@angular/forms";
 
 import { TourNgxBootstrapModule } from "ngx-tour-ngx-bootstrap";
-
-import { PopoverModule, PopoverConfig, ComponentLoaderFactory, PositioningService } from "ngx-bootstrap";
-
+import { PopoverModule, PopoverConfig, ComponentLoaderFactory } from "ngx-bootstrap";
 import { NgxBootstrapModule } from './ngx-bootstrap.module';
 
 import { AppComponent } from "./app.component";
@@ -31,6 +29,8 @@ import { BlogComponent } from "./blog/blog.component";
 import { NgxBootstrapComponent } from "./ngx-bootstrap/ngx-bootstrap.component";
 import { NgxDocsComponent } from "./ngx-docs/ngx-docs.component";
 
+// import { RepositionService } from "./reposition.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,8 +49,8 @@ import { NgxDocsComponent } from "./ngx-docs/ngx-docs.component";
     CheckoutComponent,
     CoverComponent,
     BlogComponent,
-    // NgxBootstrapComponent,
-    // NgxDocsComponent, // *required!
+    // NgxDocsComponent, // TODO: bring library module into here
+    // NgxBootstrapComponent
   ],
   imports: [
     BrowserModule,
@@ -60,15 +60,15 @@ import { NgxDocsComponent } from "./ngx-docs/ngx-docs.component";
     HttpClientModule,
     NgxBootstrapModule,
     PopoverModule,
-    TourNgxBootstrapModule.forRoot(), // *required!
+    TourNgxBootstrapModule.forRoot(),
   ],
   providers: [
     PopoverConfig,
     ComponentLoaderFactory,
-    PositioningService,
+    // TODO: is it worth looking at the source code of this service in terms of TS design patterns?
+    // RepositionService
   ],
   bootstrap: [AppComponent],
-  // entryComponents: [PopoverContainerComponent], // *required!
 })
 export class AppModule {
   constructor(router: Router) {
