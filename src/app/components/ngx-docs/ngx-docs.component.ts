@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RepositionPopupService } from '../reposition-popup.service';
+import { RepositionPopupService } from '../../services/reposition-popup.service';
 
 @Component({
   selector: 'app-ngx-docs',

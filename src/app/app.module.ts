@@ -8,27 +8,27 @@ import { TourNgxBootstrapModule } from "ngx-tour-ngx-bootstrap";
 import { PopoverModule, PopoverConfig, ComponentLoaderFactory, PositioningService } from "ngx-bootstrap";
 
 import { AppComponent } from "./app.component";
-import { HomeComponent } from "./home/home.component";
-import { SidebarComponent } from "./sidebar/sidebar.component";
-import { SimpleFormComponent } from "./simple-form/simple-form.component";
+import { HomeComponent } from "./components/home/home.component";
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { SimpleFormComponent } from "./components/simple-form/simple-form.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { Router } from "@angular/router";
-import { ChartComponent } from "./chart/chart.component";
-import { NavbarComponent } from "./navbar/navbar.component";
-import { DashComponent } from "./dash/dash.component";
-import { OrdersComponent } from "./order/order.component";
-import { ProductsComponent } from "./product/product.component";
-import { CustomersComponent } from "./customer/customer.component";
-import { NotFoundComponent } from "./not-found/not-found.component";
-import { PricingComponent } from "./pricing/pricing.component";
-import { AlbumComponent } from "./album/album.component";
-import { CheckoutComponent } from "./checkout/checkout.component";
-import { CoverComponent } from "./cover/cover.component";
-import { BlogComponent } from "./blog/blog.component";
-import { NgxBootstrapComponent } from "./ngx-bootstrap/ngx-bootstrap.component";
-import { NgxDocsComponent } from "./ngx-docs/ngx-docs.component";
+import { ChartComponent } from "./components/chart/chart.component";
+import { NavbarComponent } from "./components/navbar/navbar.component";
+import { DashComponent } from "./components/dash/dash.component";
+import { OrdersComponent } from "./components/order/order.component";
+import { ProductsComponent } from "./components/product/product.component";
+import { CustomersComponent } from "./components/customer/customer.component";
+import { NotFoundComponent } from "./components/not-found/not-found.component";
+import { PricingComponent } from "./components/pricing/pricing.component";
+import { AlbumComponent } from "./components/album/album.component";
+import { CheckoutComponent } from "./components/checkout/checkout.component";
+import { CoverComponent } from "./components/cover/cover.component";
+import { BlogComponent } from "./components/blog/blog.component";
+import { NgxBootstrapComponent } from "./components/ngx-bootstrap/ngx-bootstrap.component";
+import { NgxDocsComponent } from "./components/ngx-docs/ngx-docs.component";
 
-import { RepositionPopupService } from "./reposition-popup.service";
+import { RepositionPopupService } from "./services/reposition-popup.service";
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { RepositionPopupService } from "./reposition-popup.service";
     CheckoutComponent,
     CoverComponent,
     BlogComponent,
-    NgxDocsComponent, // TODO: bring library module into here
+    NgxDocsComponent,
     NgxBootstrapComponent
   ],
   imports: [
