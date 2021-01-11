@@ -20,19 +20,19 @@ interface TSINgxRoute {
 export class HomeComponent implements OnInit {
 
   public tourSteps: TSINgxbStepOption[] = [
-    {
-      anchorId: "start.tour",
-      content: "Welcome to the Ngx-Tour tour!",
-      placement: "right",
-      title: "Welcome",
-    },
-    {
-      anchorId: "angular-ui-tour",
-      route: "docs",
-      content: "Thanks to angular-ui-tour for the inspiration for the library",
-      placement: "bottom",
-      title: "angular-ui-tour",
-    },
+    // {
+    //   anchorId: "start.tour",
+    //   content: "Welcome to the Ngx-Tour tour!",
+    //   placement: "right",
+    //   title: "Welcome",
+    // },
+    // {
+    //   anchorId: "angular-ui-tour",
+    //   route: "docs",
+    //   content: "Thanks to angular-ui-tour for the inspiration for the library",
+    //   placement: "bottom",
+    //   title: "angular-ui-tour",
+    // },
     {
       anchorId: "usage",
       route: "docs",

@@ -66,7 +66,7 @@ import { RepositionPopupService } from "./reposition-popup.service";
     PopoverConfig,
     ComponentLoaderFactory,
     PositioningService,
-    RepositionPopupService
+    RepositionPopupService,
   ],
   bootstrap: [AppComponent],
 })

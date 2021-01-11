@@ -8,12 +8,12 @@ import { RepositionPopupService } from '../reposition-popup.service';
 })
 export class NgxDocsComponent implements OnInit {
 
-  // constructor(private repositionPopupService: RepositionPopupService) {
+  constructor(private repositionPopupService: RepositionPopupService) {
 
-  // }
+  }
 
   ngOnInit() {
-    // console.log('/docs repositionPopupService:', this.repositionPopupService)
+    console.log('/docs repositionPopupService:', this.repositionPopupService);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Injectable, Renderer2, Inject, ElementRef } from '@angular/core';
+import { Injectable, RendererFactory2, Renderer2, Inject, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 enum Direction {
@@ -21,8 +21,9 @@ type Node = {
 
 @Injectable()
 export class RepositionPopupService {
+  private renderer: Renderer2;
 
-  constructor(private renderer: Renderer2, @Inject(DOCUMENT) private dom) {
+  constructor(private rendererFactory: RendererFactory2, @Inject(DOCUMENT) private dom) {
 
     /**
      * RepositionService is required as ngx-tour requires ngx-bootstrap@6 in order to auto-scroll to popups created off the screen position
@@ -49,6 +50,8 @@ export class RepositionPopupService {
      *  Does ngx-tour protect against elements rendering off page (i.e. left: -200px;)?
      * 
      */
+
+    this.renderer = rendererFactory.createRenderer(null, null);
 
   }
 
