@@ -11,11 +11,10 @@ export class BrowserLoggerService {
     createLog(name: string = 'default', color: string = null): BrowserLogger {
         let n = 0;
         return (msg, obj = {}): void => {
-            const err: string = `${name} log: ${new Date().toISOString()}-LOG-#${n++} => ${msg}`;
+            n++;
+            const err: string = `${name} log: ${new Date().toISOString()}-LOG-#${n} => ${msg}`;
             const log: string = ` %c${name} log:${new Date().toISOString()}-LOG-#${n} => ${msg}`;
             const colorStyle: string = `${color ? 'color:' + color : ''}`;
-
-            // n--;
 
             if (msg instanceof Error) {
                 console.error(err, obj);

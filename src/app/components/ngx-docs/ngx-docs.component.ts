@@ -23,7 +23,8 @@ export class NgxDocsComponent implements OnInit, AfterViewInit, AfterViewChecked
   }
 
   ngAfterViewChecked(): void {
-    this.log('ngAfterViewChecked')
+    this.log('ngAfterViewChecked');
+    
   }
 
 }
