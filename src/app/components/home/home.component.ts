@@ -3,6 +3,7 @@ import { DOCUMENT } from "@angular/common";
 
 import { IStepOption, TourService } from "ngx-tour-ngx-bootstrap";
 import { INgxbStepOption } from 'ngx-tour-ngx-bootstrap/step-option.interface';
+import { BrowserLogger, BrowserLoggerService } from "../../services/browser-logger.service";
 
 interface TSINgxbStepOption extends INgxbStepOption {
   containerClass?: string;
@@ -18,6 +19,7 @@ interface TSINgxRoute {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  private log: BrowserLogger;
 
   public tourSteps: TSINgxbStepOption[] = [
     // {
@@ -134,35 +136,36 @@ export class HomeComponent implements OnInit {
     route: "dash",
   };
 
-  constructor(public tourService: TourService, @Inject(DOCUMENT) private dom) {
-    console.log('tourService', tourService);
+  constructor(public tourService: TourService, private browserLoggerService: BrowserLoggerService, @Inject(DOCUMENT) private dom) {
+    this.log = this.browserLoggerService.createLog('HomeComponent', 'lightblue');
+    this.log('tourService', tourService);
   }
 
   ngOnInit() {
     this.tourService.initialize$.subscribe((steps: IStepOption[]) => {
-      console.log('tour configured with these steps:', steps);
+      this.log('tour configured with these steps:', steps);
     });
 
     this.tourService.initialize(this.tourSteps, this.tourRoute);
 
     this.tourService.start$.subscribe((step: IStepOption) => {
-      console.log('tour start:', step);
+      this.log('tour start:', step);
     });
 
     this.tourService.end$.subscribe((step: any) => {
-      console.log('tour end:', step);
+      this.log('tour end:', step);
     });
 
     this.tourService.stepShow$.subscribe((step: IStepOption) => {
-      console.log('step shown:', step);
+      this.log('step shown:', step);
     });
 
     this.tourService.anchorRegister$.subscribe((anchor: string) => {
-      console.log('anchor registered:', anchor);
+      this.log('anchor registered:', anchor);
     });
 
     this.tourService.anchorUnregister$.subscribe((sanchor: string) => {
-      console.log('anchor unregistered:', sanchor);
+      this.log('anchor unregistered:', sanchor);
     });
 
     this.tourService.start();

@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, OnInit } from '@angular/core';
+import { BrowserLoggerService, BrowserLogger } from '../../services/browser-logger.service';
 import { RepositionPopupService } from '../../services/reposition-popup.service';
 
 @Component({
@@ -6,18 +7,23 @@ import { RepositionPopupService } from '../../services/reposition-popup.service'
   templateUrl: './ngx-docs.component.html',
   styleUrls: ['./ngx-docs.component.css']
 })
-export class NgxDocsComponent implements OnInit, AfterViewInit {
+export class NgxDocsComponent implements OnInit, AfterViewInit, AfterViewChecked {
+  private log: BrowserLogger;
 
-  constructor(private repositionPopupService: RepositionPopupService) {
-
+  constructor(private repositionPopupService: RepositionPopupService, private browserLoggerService: BrowserLoggerService) {
+    this.log = browserLoggerService.createLog('NgxDocsComponent', 'green');
   }
 
   ngOnInit(): void {
-    console.log('/docs repositionPopupService:', this.repositionPopupService);
+    this.log('repositionPopupService:', this.repositionPopupService);
   }
 
   ngAfterViewInit(): void {
-    console.log('/docs ngAfterViewInit');
+    this.log('ngAfterViewInit');
+  }
+
+  ngAfterViewChecked(): void {
+    this.log('ngAfterViewChecked')
   }
 
 }

@@ -29,6 +29,7 @@ import { NgxBootstrapComponent } from "./components/ngx-bootstrap/ngx-bootstrap.
 import { NgxDocsComponent } from "./components/ngx-docs/ngx-docs.component";
 
 import { RepositionPopupService } from "./services/reposition-popup.service";
+import { BrowserLoggerService } from "./services/browser-logger.service";
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { RepositionPopupService } from "./services/reposition-popup.service";
     ComponentLoaderFactory,
     PositioningService,
     RepositionPopupService,
+    BrowserLoggerService
   ],
   bootstrap: [AppComponent],
 })

@@ -1,5 +1,6 @@
-import { Injectable, RendererFactory2, Renderer2, Inject, ElementRef, ViewChild } from '@angular/core';
+import { Injectable, RendererFactory2, Renderer2, Inject, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { BrowserLoggerService, BrowserLogger } from './browser-logger.service';
 
 enum Direction {
   Up = 'Up',
@@ -56,8 +57,9 @@ const defaultNode: PopupNode = {
 @Injectable()
 export class RepositionPopupService {
   private renderer: Renderer2;
+  private log: BrowserLogger;
 
-  constructor(private rendererFactory: RendererFactory2, @Inject(DOCUMENT) private dom) {
+  constructor(private rendererFactory: RendererFactory2, private browserLoggerService: BrowserLoggerService, @Inject(DOCUMENT) private dom) {
 
     /**
      * RepositionService is required as ngx-tour requires ngx-bootstrap@6 in order to auto-scroll to popups created off the screen position
@@ -85,13 +87,15 @@ export class RepositionPopupService {
      * 
      */
 
-    console.log('RepositionPopupService constructor');
+    this.log = this.browserLoggerService.createLog('RepositionPopupService', 'yellow');
+
+    this.log('RepositionPopupService constructor');
     this.renderer = rendererFactory.createRenderer(null, null);
-    console.log('RepositionPopupService dom:', this.dom);
+    this.log('RepositionPopupService dom:', this.dom);
 
     const domProps = [];
     for (let name in this.dom) domProps.push(name);
-    console.log('dom properties:', domProps);
+    this.log('dom properties:', domProps);
   }
 
   public checkNodePosition(): Position {
