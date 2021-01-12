@@ -1,4 +1,4 @@
-import { Injectable, RendererFactory2, Renderer2, Inject, ElementRef } from '@angular/core';
+import { Injectable, RendererFactory2, Renderer2, Inject, ElementRef, ViewChild } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 enum Direction {
@@ -13,11 +13,45 @@ type Position = {
   y: number
 }
 
-type Node = {
+type PopupNode = {
   anchorId: string,
   classes: string[],
-  nativeElement: ElementRef
+  nativeElement?: ElementRef
 }
+
+type Viewport = {
+  x: number;
+  y: number;
+}
+
+type PageSize = {
+  x: number;
+  y: number;
+}
+
+type Browsers = {
+  safari: Viewport,
+  chrome: Viewport,
+  firefox: Viewport
+}
+
+const topLeft: Position = {
+  x: 0,
+  y: 0
+}
+
+const defaultNode: PopupNode = {
+  anchorId: 'anchor-id',
+  classes: ['btn', 'btn-primary'],
+  nativeElement: new ElementRef(null)
+}
+
+// NB: it doesn't matter if different browsers render slightly differently - just use a relative unit
+// const googleHomepage: Browsers = {
+//   safari: { x: 1976, y: 1169 },
+//   chrome: { x: 0, y: 0},
+//   firefox: { x: 2128, y: 1169 },
+// }
 
 @Injectable()
 export class RepositionPopupService {
@@ -51,32 +85,37 @@ export class RepositionPopupService {
      * 
      */
 
+    console.log('RepositionPopupService constructor');
     this.renderer = rendererFactory.createRenderer(null, null);
+    console.log('RepositionPopupService dom:', this.dom);
 
+    const domProps = [];
+    for (let name in this.dom) domProps.push(name);
+    console.log('dom properties:', domProps);
   }
 
   public checkNodePosition(): Position {
-    return { x: 0, y: 0 };
+    return topLeft;
   }
 
-  private getNode() {
-
+  private getNode(): PopupNode {
+    return defaultNode;
   }
 
   private getNodeAbsolutePosition() {
 
   }
 
-  private moveNodeIntoViewport() {
-
+  private moveNodeIntoViewport(): Position {
+    return topLeft;
   }
 
   private moveNode(direction: Direction) {
-
+    return topLeft;
   }
 
   private scrollToNode() {
-
+    
   }
 
   private getViewportSize() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { RepositionPopupService } from '../../services/reposition-popup.service';
 
 @Component({
@@ -6,14 +6,18 @@ import { RepositionPopupService } from '../../services/reposition-popup.service'
   templateUrl: './ngx-docs.component.html',
   styleUrls: ['./ngx-docs.component.css']
 })
-export class NgxDocsComponent implements OnInit {
+export class NgxDocsComponent implements OnInit, AfterViewInit {
 
   constructor(private repositionPopupService: RepositionPopupService) {
 
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     console.log('/docs repositionPopupService:', this.repositionPopupService);
+  }
+
+  ngAfterViewInit(): void {
+    console.log('/docs ngAfterViewInit');
   }
 
 }

@@ -7,7 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "github": "ng build --prod --baseHref='https://rickhallett.github.io/universal-paperclips/'",
+    "github": "ng build --prod --baseHref='https://rickhallett.github.io/ngx-tour-demo/'",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
