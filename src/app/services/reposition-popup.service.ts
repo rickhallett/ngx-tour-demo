@@ -44,232 +44,9 @@ type PopupNode = {
   verticalOffset: VerticalOffset
   horizantalOffset: HorizantalOffset;
   visible: boolean;
-  boundingClientSideInvisible: SidesOffscreen;
+  boundingClientSideVisibility: SidesOffscreen;
 };
 
-//#endregion
-
-//#region test objects
-
-// offset test case 1
-const topOffset: VerticalOffset = {
-  offScreen: true,
-  top: -200
-};
-
-// offset test case 2
-const bottomOffset: VerticalOffset = {
-  offScreen: true,
-  bottom: 200
-};
-
-// offset test case 3
-const leftOffset: HorizantalOffset = {
-  offScreen: true,
-  left: -200
-};
-
-// offset test case 4
-const rightOffset: HorizantalOffset = {
-  offScreen: true,
-  right: 200
-};
-
-// offset test case 5
-const noVerticalOffset: VerticalOffset = {
-  offScreen: false
-};
-
-// offset test case 6
-const noHorizantalOffset: HorizantalOffset = {
-  offScreen: false
-};
-
-// offset test case 7
-const halfLeftOffset: HorizantalOffset = {
-  offScreen: true,
-  left: -100
-};
-
-// offset test case 8
-const halfRightOffset: HorizantalOffset = {
-  offScreen: true,
-  right: 100
-};
-
-// offset test case 9
-const halfTopOffset: VerticalOffset = {
-  offScreen: true,
-  top: -100
-};
-
-// offset test case 10
-const halfBottomOffset: VerticalOffset = {
-  offScreen: true,
-  top: 100
-};
-
-// test case 1
-const visibleNode: PopupNode = {
-  anchorId: "docs.start",
-  classes: ["popover-container", "popover-header"],
-  elementRef: new ElementRef(null),
-  verticalOffset: noVerticalOffset, // distance to move node on y axis
-  horizantalOffset: noHorizantalOffset, // distance to move node on x axis
-  visible: true,
-  boundingClientSideInvisible: {
-    top: false,
-    bottom: false,
-    left: false,
-    right: false,
-    any: false, // acid test for finding which Side and moving
-    all: false, // acid test for being completely off screen
-  },
-};
-
-// test case 2
-const nodeAboveViewport: PopupNode = {
-  anchorId: "docs.start",
-  classes: ["popover-container", "popover-header"],
-  elementRef: new ElementRef(null),
-  verticalOffset: topOffset, // distance to move node on y axis
-  horizantalOffset: noHorizantalOffset, // distance to move node on x axis
-  visible: false,
-  boundingClientSideInvisible: {
-    top: true,
-    bottom: true,
-    left: true,
-    right: true,
-    any: true, // acid test for finding which Side and moving
-    all: true, // acid test for being completely off screen
-  },
-};
-
-// test case 3
-const nodeBelowViewport: PopupNode = {
-  anchorId: "docs.start",
-  classes: ["popover-container", "popover-header"],
-  elementRef: new ElementRef(null),
-  verticalOffset: bottomOffset, // distance to move node on y axis
-  horizantalOffset: noHorizantalOffset, // distance to move node on x axis
-  visible: false,
-  boundingClientSideInvisible: {
-    top: true,
-    bottom: true,
-    left: true,
-    right: true,
-    any: true, // acid test for finding which Side and moving
-    all: true, // acid test for being completely off screen
-  },
-};
-
-// test case 4
-const nodeLeftOfViewport: PopupNode = {
-  anchorId: "docs.start",
-  classes: ["popover-container", "popover-header"],
-  elementRef: new ElementRef(null),
-  verticalOffset: noVerticalOffset, // distance to move node on y axis
-  horizantalOffset: leftOffset, // distance to move node on x axis
-  visible: false,
-  boundingClientSideInvisible: {
-    top: true,
-    bottom: true,
-    left: true,
-    right: true,
-    any: true, // acid test for finding which Side and moving
-    all: true, // acid test for being completely off screen
-  },
-};
-
-// test case 5
-const nodeRightOfViewport: PopupNode = {
-  anchorId: "docs.start",
-  classes: ["popover-container", "popover-header"],
-  elementRef: new ElementRef(null),
-  verticalOffset: noVerticalOffset, // distance to move node on y axis
-  horizantalOffset: rightOffset, // distance to move node on x axis
-  visible: false,
-  boundingClientSideInvisible: {
-    top: true,
-    bottom: true,
-    left: true,
-    right: true,
-    any: true, // acid test for finding which Side and moving
-    all: true, // acid test for being completely off screen
-  },
-};
-
-// test case 6
-const nodeHalfWayLeftOfViewport: PopupNode = {
-  anchorId: "docs.start",
-  classes: ["popover-container", "popover-header"],
-  elementRef: new ElementRef(null),
-  verticalOffset: noVerticalOffset, // distance to move node on y axis
-  horizantalOffset: halfLeftOffset, // distance to move node on x axis
-  visible: false,
-  boundingClientSideInvisible: {
-    top: true,
-    bottom: true,
-    left: true,
-    right: false,
-    any: true, // acid test for finding which Side and moving
-    all: false, // acid test for being completely off screen
-  },
-};
-
-// test case 7
-const nodeHalfWayRightOfViewport: PopupNode = {
-  anchorId: "docs.start",
-  classes: ["popover-container", "popover-header"],
-  elementRef: new ElementRef(null),
-  verticalOffset: noVerticalOffset, // distance to move node on y axis
-  horizantalOffset: halfRightOffset, // distance to move node on x axis
-  visible: false,
-  boundingClientSideInvisible: {
-    top: true,
-    bottom: true,
-    left: false,
-    right: true,
-    any: true, // acid test for finding which Side and moving
-    all: false, // acid test for being completely off screen
-  },
-};
-
-// test case 8
-const nodeHalfWayTopOfViewport: PopupNode = {
-  anchorId: "docs.start",
-  classes: ["popover-container", "popover-header"],
-  elementRef: new ElementRef(null),
-  verticalOffset: halfTopOffset, // distance to move node on y axis
-  horizantalOffset: noHorizantalOffset, // distance to move node on x axis
-  visible: false,
-  boundingClientSideInvisible: {
-    top: true,
-    bottom: false,
-    left: true,
-    right: true,
-    any: true, // acid test for finding which Side and moving
-    all: false, // acid test for being completely off screen
-  },
-};
-
-// test case 9
-const nodeHalfWayBottomOfViewport: PopupNode = {
-  anchorId: "docs.start",
-  classes: ["popover-container", "popover-header"],
-  elementRef: new ElementRef(null),
-  verticalOffset: halfBottomOffset, // distance to move node on y axis
-  horizantalOffset: noHorizantalOffset, // distance to move node on x axis
-  visible: false,
-  boundingClientSideInvisible: {
-    top: false,
-    bottom: true,
-    left: true,
-    right: true,
-    any: true, // acid test for finding which Side and moving
-    all: false, // acid test for being completely off screen
-  },
-};
 //#endregion
 
 @Injectable()
@@ -295,13 +72,14 @@ export class RepositionPopupService {
   // BROWSER TEST POINT - do properties return consistently with user experience?
 
   public getNode(): PopupNode {
+    // NB: will there ever be more than one popup onscreen? If so, this will only capture the first.
+
     const nativeEl = this.dom.getElementsByTagName("popover-container")[0];
     if (!nativeEl) return;
 
-    const elemRect = nativeEl.getBoundingClientRect();
-    const bodyRect = this.dom.body.getBoundingClientRect();
     const verticalOffset = this.getVerticalOffset(nativeEl);
     const horizantalOffset = this.getHorizantalOffset(nativeEl);
+    const boundingClientSideVisibility = this.getSideVisibilies(nativeEl);
 
     return {
       anchorId: this.getAnchorId(),
@@ -309,8 +87,8 @@ export class RepositionPopupService {
       elementRef: new ElementRef(nativeEl),
       verticalOffset,
       horizantalOffset,
-      boundingClientSideInvisible: this.getSideVisibilies(nativeEl),
-      visible: this.isElementVisible(nativeEl),
+      boundingClientSideVisibility,
+      visible: this.isElementVisible(boundingClientSideVisibility),
     };
   }
 
@@ -346,9 +124,14 @@ export class RepositionPopupService {
     return { offScreen: false };
   }
 
+  // BUG: this function is running at some point BEFORE the popup is ending up off screen, thereby making
+  // any code reliant on it completely fucking broken.
   getSideVisibilies = (elem): SidesOffscreen => {
     // Get element's bounding
     const bounding = elem.getBoundingClientRect();
+
+    console.log('getSideVisibilities -> elem', elem);
+    console.log('getSideVisibilies -> popup rect:', bounding);
 
     // Check if it's out of the viewport on each side
     let sides = {
@@ -356,10 +139,10 @@ export class RepositionPopupService {
       left: bounding.left < 0,
       bottom:
         bounding.bottom >
-        (window.innerHeight || document.documentElement.clientHeight),
+        (/* window.innerHeight || NB - these values are NOT equivalent!!!) */ document.documentElement.clientHeight),
       right:
         bounding.right >
-        (window.innerWidth || document.documentElement.clientWidth),
+        (/* window.innerWidth || - these values are NOT equivalent!!! */ document.documentElement.clientWidth),
     };
 
     return {
@@ -369,9 +152,8 @@ export class RepositionPopupService {
     };
   };
 
-  private isElementVisible(el): boolean {
-    var isOut = this.getSideVisibilies(el);
-    if (isOut.any) {
+  private isElementVisible(clientBoundings): boolean {
+    if (clientBoundings.any) {
       this.log("Not in the viewport! =(");
       return false;
     } else {
@@ -391,5 +173,22 @@ export class RepositionPopupService {
     return tourStep.anchorId;
   }
 
-  
+  private scrollToNode(el) {
+    el.scrollIntoView();
+  }
+
+  public scrollIntoViewIfNeeded() {
+    const popup = this.getNode();
+    if (!popup) return;
+
+    this.log('popup found:', popup);
+
+    // if (popup.visible) {
+    //   this.log('Popup already visible!');
+    //   return;
+    // }
+
+    this.log('BOYO ALERT');
+    popup.elementRef.nativeElement.scrollIntoView();
+  }
 }
