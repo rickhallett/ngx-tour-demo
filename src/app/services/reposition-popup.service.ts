@@ -7,7 +7,7 @@ import {
 } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { BrowserLoggerService, BrowserLogger } from "./browser-logger.service";
-import { appTourSteps } from "../tours/app-tour";
+import { docsTourSteps } from "../tours/docs-tour";
 
 /**
  * TODO: why does safari return negative top values for getBoundingClientRect?
@@ -163,14 +163,16 @@ export class RepositionPopupService {
   }
 
   private getAnchorId(): string {
-    const popupTitle = this.dom.getElementsByClassName("popover-title")[0]
-      .innerHTML;
-    const tourStep = appTourSteps.find((step) => step.title === popupTitle);
+    // const popupTitle = this.dom.getElementsByClassName("popover-title")[0]
+    //   .innerHTML;
+    // const tourStep = docsTourSteps.find((step) => step.title === popupTitle);
 
-    if (!tourStep)
-      throw new Error(`No tour step was found for the node with ${popupTitle}`);
+    // if (!tourStep)
+    //   throw new Error(`No tour step was found for the node with ${popupTitle}`);
 
-    return tourStep.anchorId;
+    // return tourStep.anchorId;
+
+    return 'we dont really need this, do we Mr Rick?';
   }
 
   private scrollToNode(el) {
