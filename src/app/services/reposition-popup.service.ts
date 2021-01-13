@@ -125,7 +125,7 @@ export class RepositionPopupService {
   }
 
   // BUG: this function is running at some point BEFORE the popup is ending up off screen, thereby making
-  // any code reliant on it completely FUCKING BROKEN. 
+  // any code reliant on it completely FUCKING BROKEN. (including the scroll into view)
   getSideVisibilies = (elem): SidesOffscreen => {
     // Get element's bounding
     const bounding = elem.getBoundingClientRect();
@@ -183,12 +183,17 @@ export class RepositionPopupService {
 
     this.log('popup found:', popup);
 
-    // if (popup.visible) {
-    //   this.log('Popup already visible!');
-    //   return;
-    // }
+    if (popup.visible) {
+      this.log('Popup already visible!');
+      return;
+    }
 
     this.log('BOYO ALERT');
-    popup.elementRef.nativeElement.scrollIntoView();
+    popup.elementRef.nativeElement.scrollIntoView({ behavior: "smooth" });
+
+    // TODO: this needs to be sensitive to whether the offset needed is x/y axis
+    const offset = 50;
+    window.scroll({ top: (popup.elementRef.nativeElement.offsetTop - offset), left: 0, behavior: 'smooth' });
+    
   }
 }
