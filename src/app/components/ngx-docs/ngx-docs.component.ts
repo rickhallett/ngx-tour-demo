@@ -27,6 +27,8 @@ export class NgxDocsComponent implements OnInit, AfterViewInit, AfterViewChecked
 
     const popupNode = this.repositionPopupService.getNode();
     this.log('popupNode', popupNode);
+
+    
   }
 
 }

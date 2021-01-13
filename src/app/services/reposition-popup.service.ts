@@ -43,7 +43,7 @@ type PopupNode = {
   elementRef: ElementRef;
   verticalOffset: VerticalOffset
   horizantalOffset: HorizantalOffset;
-  isElementVisible: boolean;
+  visible: boolean;
   boundingClientSideInvisible: SidesOffscreen;
 };
 
@@ -116,7 +116,7 @@ const visibleNode: PopupNode = {
   elementRef: new ElementRef(null),
   verticalOffset: noVerticalOffset, // distance to move node on y axis
   horizantalOffset: noHorizantalOffset, // distance to move node on x axis
-  isElementVisible: true,
+  visible: true,
   boundingClientSideInvisible: {
     top: false,
     bottom: false,
@@ -134,7 +134,7 @@ const nodeAboveViewport: PopupNode = {
   elementRef: new ElementRef(null),
   verticalOffset: topOffset, // distance to move node on y axis
   horizantalOffset: noHorizantalOffset, // distance to move node on x axis
-  isElementVisible: false,
+  visible: false,
   boundingClientSideInvisible: {
     top: true,
     bottom: true,
@@ -152,7 +152,7 @@ const nodeBelowViewport: PopupNode = {
   elementRef: new ElementRef(null),
   verticalOffset: bottomOffset, // distance to move node on y axis
   horizantalOffset: noHorizantalOffset, // distance to move node on x axis
-  isElementVisible: false,
+  visible: false,
   boundingClientSideInvisible: {
     top: true,
     bottom: true,
@@ -170,7 +170,7 @@ const nodeLeftOfViewport: PopupNode = {
   elementRef: new ElementRef(null),
   verticalOffset: noVerticalOffset, // distance to move node on y axis
   horizantalOffset: leftOffset, // distance to move node on x axis
-  isElementVisible: false,
+  visible: false,
   boundingClientSideInvisible: {
     top: true,
     bottom: true,
@@ -188,7 +188,7 @@ const nodeRightOfViewport: PopupNode = {
   elementRef: new ElementRef(null),
   verticalOffset: noVerticalOffset, // distance to move node on y axis
   horizantalOffset: rightOffset, // distance to move node on x axis
-  isElementVisible: false,
+  visible: false,
   boundingClientSideInvisible: {
     top: true,
     bottom: true,
@@ -206,7 +206,7 @@ const nodeHalfWayLeftOfViewport: PopupNode = {
   elementRef: new ElementRef(null),
   verticalOffset: noVerticalOffset, // distance to move node on y axis
   horizantalOffset: halfLeftOffset, // distance to move node on x axis
-  isElementVisible: false,
+  visible: false,
   boundingClientSideInvisible: {
     top: true,
     bottom: true,
@@ -224,7 +224,7 @@ const nodeHalfWayRightOfViewport: PopupNode = {
   elementRef: new ElementRef(null),
   verticalOffset: noVerticalOffset, // distance to move node on y axis
   horizantalOffset: halfRightOffset, // distance to move node on x axis
-  isElementVisible: false,
+  visible: false,
   boundingClientSideInvisible: {
     top: true,
     bottom: true,
@@ -242,7 +242,7 @@ const nodeHalfWayTopOfViewport: PopupNode = {
   elementRef: new ElementRef(null),
   verticalOffset: halfTopOffset, // distance to move node on y axis
   horizantalOffset: noHorizantalOffset, // distance to move node on x axis
-  isElementVisible: false,
+  visible: false,
   boundingClientSideInvisible: {
     top: true,
     bottom: false,
@@ -260,7 +260,7 @@ const nodeHalfWayBottomOfViewport: PopupNode = {
   elementRef: new ElementRef(null),
   verticalOffset: halfBottomOffset, // distance to move node on y axis
   horizantalOffset: noHorizantalOffset, // distance to move node on x axis
-  isElementVisible: false,
+  visible: false,
   boundingClientSideInvisible: {
     top: false,
     bottom: true,
@@ -271,8 +271,6 @@ const nodeHalfWayBottomOfViewport: PopupNode = {
   },
 };
 //#endregion
-
-
 
 @Injectable()
 export class RepositionPopupService {
@@ -294,6 +292,8 @@ export class RepositionPopupService {
     this.log("dom:", this.dom);
   }
 
+  // BROWSER TEST POINT - do properties return consistently with user experience?
+
   public getNode(): PopupNode {
     const nativeEl = this.dom.getElementsByTagName("popover-container")[0];
     if (!nativeEl) return;
@@ -310,7 +310,7 @@ export class RepositionPopupService {
       verticalOffset,
       horizantalOffset,
       boundingClientSideInvisible: this.getSideVisibilies(nativeEl),
-      isElementVisible: this.isElementVisible(nativeEl),
+      visible: this.isElementVisible(nativeEl),
     };
   }
 
@@ -391,5 +391,5 @@ export class RepositionPopupService {
     return tourStep.anchorId;
   }
 
-  private scrollToNode() {}
+  
 }
