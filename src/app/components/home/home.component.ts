@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
       this.log('anchor unregistered:', sanchor);
     });
 
-    this.tourService.start();
+    // this.tourService.start();
   }
 
 }

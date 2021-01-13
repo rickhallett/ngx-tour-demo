@@ -10,30 +10,30 @@ export interface TSINgxRoute {
 }
 
 export const appTourStartingRoute: TSINgxRoute = {
-    route: "docs", // acts as the 'base' route. If not defined on each step, this is where it returns to
+    route: "dash", // acts as the 'base' route. If not defined on each step, this is where it returns to
 };
 
 export const appTourSteps: TSINgxbStepOption[] = [
-    // {
-    //     anchorId: "start.tour",
-    //     content: "Welcome to the Ngx-Tour tour!",
-    //     placement: "right",
-    //     title: "Welcome",
-    // },
-    // {
-    //     anchorId: "angular-ui-tour",
-    //     route: "docs",
-    //     content: "Thanks to angular-ui-tour for the inspiration for the library",
-    //     placement: "bottom",
-    //     title: "angular-ui-tour",
-    // },
-    // {
-    //     anchorId: "usage",
-    //     // route: "docs",
-    //     content: "Energy management is everything",
-    //     placement: "bottom",
-    //     title: "Empty your cup"
-    // },
+    {
+        anchorId: "start.tour",
+        content: "Welcome to the Ngx-Tour tour!",
+        placement: "right",
+        title: "Welcome",
+    },
+    {
+        anchorId: "angular-ui-tour",
+        route: "docs",
+        content: "Thanks to angular-ui-tour for the inspiration for the library",
+        placement: "bottom",
+        title: "angular-ui-tour",
+    },
+    {
+        anchorId: "usage",
+        route: "docs",
+        content: "Energy management is everything",
+        placement: "bottom",
+        title: "Empty your cup"
+    },
     {
         anchorId: "docs.tourService",
         route: "docs",
@@ -98,24 +98,28 @@ export const appTourSteps: TSINgxbStepOption[] = [
     },
     {
         anchorId: "config.placement.default",
+        route: 'docs',
         content: "Sliiide to the left.",
         placement: "left",
         title: "Left Placement",
     },
     {
         anchorId: "config.placement.default",
+        route: 'docs',
         content: "Sliiide to the right.",
         placement: "right",
         title: "Right Placement",
     },
     {
         anchorId: "config.placement.default",
+        route: 'docs',
         content: "Take it back now y'all.  One hop this time.",
         placement: "bottom",
         title: "Bottom Placement",
     },
     {
         anchorId: "config.buttons.custom",
+        route: 'docs',
         content: "You can set custom step button names",
         title: "Button Titles",
         prevBtnTitle: "My Prev",
@@ -124,11 +128,13 @@ export const appTourSteps: TSINgxbStepOption[] = [
     },
     {
         anchorId: "hotkeys",
+        route: 'docs',
         content: "Try using the hotkeys to navigate through the tour.",
         title: "Hotkeys",
     },
     {
         anchorId: "events",
+        route: 'docs',
         content: "You can subscribe to events",
         title: "Events",
     },
