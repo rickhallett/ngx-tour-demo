@@ -10,7 +10,7 @@ export interface TSINgxRoute {
 }
 
 export const appTourStartingRoute: TSINgxRoute = {
-    route: "dash",
+    route: "docs", // acts as the 'base' route. If not defined on each step, this is where it returns to
 };
 
 export const appTourSteps: TSINgxbStepOption[] = [
@@ -29,17 +29,31 @@ export const appTourSteps: TSINgxbStepOption[] = [
     // },
     {
         anchorId: "usage",
-        route: "docs",
+        // route: "docs",
         content: "Energy management is everything",
         placement: "bottom",
         title: "Empty your cup"
     },
     {
-        anchorId: "usage",
+        anchorId: "docs.tourService",
         route: "docs",
-        content: "Energy management is everything",
+        content: "We show the way, you just pay",
+        placement: "bottom",
+        title: "Generally renders half way off screen"
+    },
+    {
+        anchorId: "docs.defaults",
+        route: "docs",
+        content: "And scroll all the way down (if placement == left, this will scroll but be partially off screen",
         placement: "left",
-        title: "Empty your cup"
+        title: "If set to bottom, this renders completely off screen"
+    },
+    {
+        anchorId: 'installation',
+        route: 'docs',
+        content: 'And scroll all the way back up...(if placement == top, this will be completely off screen)',
+        title: 'This will scroll up, and render on screen, if placement == bottom',
+        placement: 'top'
     },
     {
         anchorId: "dash.shipments",
@@ -69,19 +83,15 @@ export const appTourSteps: TSINgxbStepOption[] = [
         containerClass: "custom-tour-class",
     },
     {
-        anchorId: "another.route",
-        content: "Like this!",
-        route: "ngx-bootstrap/other",
-        title: "Another Route",
-    },
-    {
         anchorId: "config.route",
-        content: "And then back again.",
+        route: 'docs',
+        content: "",
         placement: "bottom",
-        title: "Route Return",
+        title: "???",
     },
     {
         anchorId: "config.placement.default",
+        route: 'docs',
         content:
             "Steps can be positioned around an anchor. You can even have multiple steps use the same anchor.",
         title: "No Placement",

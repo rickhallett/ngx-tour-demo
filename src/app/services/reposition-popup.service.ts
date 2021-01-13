@@ -1,271 +1,395 @@
-import { Injectable, RendererFactory2, Renderer2, Inject, ElementRef } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { BrowserLoggerService, BrowserLogger } from './browser-logger.service';
-import { appTourSteps } from '../tours/app-tour';
+import {
+  Injectable,
+  RendererFactory2,
+  Renderer2,
+  Inject,
+  ElementRef,
+} from "@angular/core";
+import { DOCUMENT } from "@angular/common";
+import { BrowserLoggerService, BrowserLogger } from "./browser-logger.service";
+import { appTourSteps } from "../tours/app-tour";
 
-/*!
- * Check if an element is out of the viewport
- * (c) 2018 Chris Ferdinandi, MIT License, https://gomakethings.com
- * @param  {Node}  elem The element to check
- * @return {Object}     A set of booleans for each side of the element
+/**
+ * TODO: why does safari return negative top values for getBoundingClientRect?
+ * This will force a browser checking condition if we are to include it
  */
-const isOutOfViewport = function (elem) {
 
-  // Get element's bounding
-  var bounding = elem.getBoundingClientRect();
+//#region types
 
-  // Check if it's out of the viewport on each side
-  var out = { top: null, left: null, bottom: null, right: null, any: null, all: null };
-  out.top = bounding.top < 0;
-  out.left = bounding.left < 0;
-  out.bottom = bounding.bottom > (window.innerHeight || document.documentElement.clientHeight);
-  out.right = bounding.right > (window.innerWidth || document.documentElement.clientWidth);
-  out.any = out.top || out.left || out.bottom || out.right;
-  out.all = out.top && out.left && out.bottom && out.right;
-
-  return out;
-
+type SidesOffscreen = {
+  top: boolean;
+  left: boolean;
+  bottom: boolean;
+  right: boolean;
+  any: boolean;
+  all: boolean;
 };
 
-enum Direction {
-  Up = 'Up',
-  Down = 'Down',
-  Left = 'Left',
-  Right = 'Right'
+type HorizantalOffset = {
+  offScreen: boolean,
+  left?: number,
+  right?: number
 }
 
-type Position = {
-  x: number,
-  y: number
+type VerticalOffset = {
+  offScreen: boolean,
+  top?: number,
+  bottom?: number
 }
 
 type PopupNode = {
-  anchorId: string,
-  classes: string[],
-  // TODO: is there any advantage to wrapping this?
-  elementRef?: ElementRef,
-  elemRect: DOMRect,
-  bodyRect: DOMRect,
-  verticalOffset: number,
-  horizantalOffset: number,
-  isElementVisible: boolean
-}
+  anchorId: string;
+  classes: string[];
+  elementRef: ElementRef;
+  verticalOffset: VerticalOffset
+  horizantalOffset: HorizantalOffset;
+  isElementVisible: boolean;
+  boundingClientSideInvisible: SidesOffscreen;
+};
 
-type Viewport = {
-  x: number;
-  y: number;
-}
+//#endregion
 
-type PageSize = {
-  x: number;
-  y: number;
-}
+//#region test objects
 
-type Browsers = {
-  safari: Viewport,
-  chrome: Viewport,
-  firefox: Viewport
-}
+// offset test case 1
+const topOffset: VerticalOffset = {
+  offScreen: true,
+  top: -200
+};
 
-const topLeft: Position = {
-  x: 0,
-  y: 0
-}
+// offset test case 2
+const bottomOffset: VerticalOffset = {
+  offScreen: true,
+  bottom: 200
+};
 
-const defaultNode: PopupNode = {
-  anchorId: 'anchor-id',
-  classes: ['btn', 'btn-primary'],
+// offset test case 3
+const leftOffset: HorizantalOffset = {
+  offScreen: true,
+  left: -200
+};
+
+// offset test case 4
+const rightOffset: HorizantalOffset = {
+  offScreen: true,
+  right: 200
+};
+
+// offset test case 5
+const noVerticalOffset: VerticalOffset = {
+  offScreen: false
+};
+
+// offset test case 6
+const noHorizantalOffset: HorizantalOffset = {
+  offScreen: false
+};
+
+// offset test case 7
+const halfLeftOffset: HorizantalOffset = {
+  offScreen: true,
+  left: -100
+};
+
+// offset test case 8
+const halfRightOffset: HorizantalOffset = {
+  offScreen: true,
+  right: 100
+};
+
+// offset test case 9
+const halfTopOffset: VerticalOffset = {
+  offScreen: true,
+  top: -100
+};
+
+// offset test case 10
+const halfBottomOffset: VerticalOffset = {
+  offScreen: true,
+  top: 100
+};
+
+// test case 1
+const visibleNode: PopupNode = {
+  anchorId: "docs.start",
+  classes: ["popover-container", "popover-header"],
   elementRef: new ElementRef(null),
-  elemRect: new DOMRect(0, 0),
-  bodyRect: new DOMRect(0, 0),
-  verticalOffset: 0,
-  horizantalOffset: 0,
-  isElementVisible: true
-}
+  verticalOffset: noVerticalOffset, // distance to move node on y axis
+  horizantalOffset: noHorizantalOffset, // distance to move node on x axis
+  isElementVisible: true,
+  boundingClientSideInvisible: {
+    top: false,
+    bottom: false,
+    left: false,
+    right: false,
+    any: false, // acid test for finding which Side and moving
+    all: false, // acid test for being completely off screen
+  },
+};
 
-// NB: it doesn't matter if different browsers render slightly differently - just use a relative unit
-// const googleHomepage: Browsers = {
-//   safari: { x: 1976, y: 1169 },
-//   chrome: { x: 0, y: 0},
-//   firefox: { x: 2128, y: 1169 },
-// }
+// test case 2
+const nodeAboveViewport: PopupNode = {
+  anchorId: "docs.start",
+  classes: ["popover-container", "popover-header"],
+  elementRef: new ElementRef(null),
+  verticalOffset: topOffset, // distance to move node on y axis
+  horizantalOffset: noHorizantalOffset, // distance to move node on x axis
+  isElementVisible: false,
+  boundingClientSideInvisible: {
+    top: true,
+    bottom: true,
+    left: true,
+    right: true,
+    any: true, // acid test for finding which Side and moving
+    all: true, // acid test for being completely off screen
+  },
+};
+
+// test case 3
+const nodeBelowViewport: PopupNode = {
+  anchorId: "docs.start",
+  classes: ["popover-container", "popover-header"],
+  elementRef: new ElementRef(null),
+  verticalOffset: bottomOffset, // distance to move node on y axis
+  horizantalOffset: noHorizantalOffset, // distance to move node on x axis
+  isElementVisible: false,
+  boundingClientSideInvisible: {
+    top: true,
+    bottom: true,
+    left: true,
+    right: true,
+    any: true, // acid test for finding which Side and moving
+    all: true, // acid test for being completely off screen
+  },
+};
+
+// test case 4
+const nodeLeftOfViewport: PopupNode = {
+  anchorId: "docs.start",
+  classes: ["popover-container", "popover-header"],
+  elementRef: new ElementRef(null),
+  verticalOffset: noVerticalOffset, // distance to move node on y axis
+  horizantalOffset: leftOffset, // distance to move node on x axis
+  isElementVisible: false,
+  boundingClientSideInvisible: {
+    top: true,
+    bottom: true,
+    left: true,
+    right: true,
+    any: true, // acid test for finding which Side and moving
+    all: true, // acid test for being completely off screen
+  },
+};
+
+// test case 5
+const nodeRightOfViewport: PopupNode = {
+  anchorId: "docs.start",
+  classes: ["popover-container", "popover-header"],
+  elementRef: new ElementRef(null),
+  verticalOffset: noVerticalOffset, // distance to move node on y axis
+  horizantalOffset: rightOffset, // distance to move node on x axis
+  isElementVisible: false,
+  boundingClientSideInvisible: {
+    top: true,
+    bottom: true,
+    left: true,
+    right: true,
+    any: true, // acid test for finding which Side and moving
+    all: true, // acid test for being completely off screen
+  },
+};
+
+// test case 6
+const nodeHalfWayLeftOfViewport: PopupNode = {
+  anchorId: "docs.start",
+  classes: ["popover-container", "popover-header"],
+  elementRef: new ElementRef(null),
+  verticalOffset: noVerticalOffset, // distance to move node on y axis
+  horizantalOffset: halfLeftOffset, // distance to move node on x axis
+  isElementVisible: false,
+  boundingClientSideInvisible: {
+    top: true,
+    bottom: true,
+    left: true,
+    right: false,
+    any: true, // acid test for finding which Side and moving
+    all: false, // acid test for being completely off screen
+  },
+};
+
+// test case 7
+const nodeHalfWayRightOfViewport: PopupNode = {
+  anchorId: "docs.start",
+  classes: ["popover-container", "popover-header"],
+  elementRef: new ElementRef(null),
+  verticalOffset: noVerticalOffset, // distance to move node on y axis
+  horizantalOffset: halfRightOffset, // distance to move node on x axis
+  isElementVisible: false,
+  boundingClientSideInvisible: {
+    top: true,
+    bottom: true,
+    left: false,
+    right: true,
+    any: true, // acid test for finding which Side and moving
+    all: false, // acid test for being completely off screen
+  },
+};
+
+// test case 8
+const nodeHalfWayTopOfViewport: PopupNode = {
+  anchorId: "docs.start",
+  classes: ["popover-container", "popover-header"],
+  elementRef: new ElementRef(null),
+  verticalOffset: halfTopOffset, // distance to move node on y axis
+  horizantalOffset: noHorizantalOffset, // distance to move node on x axis
+  isElementVisible: false,
+  boundingClientSideInvisible: {
+    top: true,
+    bottom: false,
+    left: true,
+    right: true,
+    any: true, // acid test for finding which Side and moving
+    all: false, // acid test for being completely off screen
+  },
+};
+
+// test case 9
+const nodeHalfWayBottomOfViewport: PopupNode = {
+  anchorId: "docs.start",
+  classes: ["popover-container", "popover-header"],
+  elementRef: new ElementRef(null),
+  verticalOffset: halfBottomOffset, // distance to move node on y axis
+  horizantalOffset: noHorizantalOffset, // distance to move node on x axis
+  isElementVisible: false,
+  boundingClientSideInvisible: {
+    top: false,
+    bottom: true,
+    left: true,
+    right: true,
+    any: true, // acid test for finding which Side and moving
+    all: false, // acid test for being completely off screen
+  },
+};
+//#endregion
+
+
 
 @Injectable()
 export class RepositionPopupService {
   private renderer: Renderer2;
   private log: BrowserLogger;
 
-  constructor(private rendererFactory: RendererFactory2, private browserLoggerService: BrowserLoggerService, @Inject(DOCUMENT) private dom) {
-
-    /**
-     * RepositionService is required as ngx-tour requires ngx-bootstrap@6 in order to auto-scroll to popups created off the screen position
-     *  
-     * Must:
-     *  Ensure tour steps are scrolled to.
-     *  Check for nodes on each view update
-     * 
-     * 
-     * Should:
-     * 
-     * 
-     * Could:
-     *  Hook into each component creation at the level of the module (injection?), rather than re-stating in each component
-     *  Apply CSS classes that will need to be available globally, either at app or component creation
-     *  Have a few basic tests that help flag any future issues when upgrading angular, ngx-bootstrap or ngx-tour
-     * 
-     * 
-     * Won't:
-     *  Take me forever
-     * 
-     * 
-     * Unknowns:
-     *  Does ngx-tour protect against elements rendering off page (i.e. left: -200px;)?
-     * 
-     */
-
-    this.log = this.browserLoggerService.createLog('RepositionPopupService', 'yellow');
+  constructor(
+    private rendererFactory: RendererFactory2,
+    private browserLoggerService: BrowserLoggerService,
+    @Inject(DOCUMENT) private dom
+  ) {
+    this.log = this.browserLoggerService.createLog(
+      "RepositionPopupService",
+      "yellow"
+    );
 
     this.renderer = rendererFactory.createRenderer(null, null);
-    this.log('renderer:', this.renderer);
-    this.log('dom:', this.dom);
-
-    const domProps = [];
-    for (let name in this.dom) domProps.push(name);
-
-    this.log('dom properties:', domProps);
+    this.log("renderer:", this.renderer);
+    this.log("dom:", this.dom);
   }
 
-  public checkNodePosition(): Position {
-    return topLeft;
-  }
-
-  // NB - as this is being called by ngAfterViewChecked, we need to guard for nativeEl being undefined
-  // before the component is initialised
   public getNode(): PopupNode {
-    const nativeEl = this.dom.getElementsByTagName('popover-container')[0];
+    const nativeEl = this.dom.getElementsByTagName("popover-container")[0];
     if (!nativeEl) return;
 
     const elemRect = nativeEl.getBoundingClientRect();
-    const bodyRect = this.dom.body.getBoundingClientRect()
-    const verticalOffset = bodyRect.top - elemRect.top;
-    const horizantalOffset = bodyRect.left - elemRect.left;
-
-    if (verticalOffset < 0) {
-
-    }
-
-    if (horizantalOffset) {
-
-    }
+    const bodyRect = this.dom.body.getBoundingClientRect();
+    const verticalOffset = this.getVerticalOffset(nativeEl);
+    const horizantalOffset = this.getHorizantalOffset(nativeEl);
 
     return {
       anchorId: this.getAnchorId(),
       classes: nativeEl.classList,
       elementRef: new ElementRef(nativeEl),
-      elemRect: elemRect,
-      bodyRect,
       verticalOffset,
       horizantalOffset,
-      isElementVisible: this.isElementVisible(nativeEl)
-    }
+      boundingClientSideInvisible: this.getSideVisibilies(nativeEl),
+      isElementVisible: this.isElementVisible(nativeEl),
+    };
   }
 
-  /**
-   *  /docs top
-   * 
-   * rect
-      DOMRect
+  private getVerticalOffset(el) {
+    const bounding = el.getBoundingClientRect();
 
-      bottom: -452.26097106933594
+    if (bounding.top < 0) {
+      return { offScreen: true, top: bounding.top };
+    }
 
-      height: 123.27204895019531
+    if (
+      bounding.bottom >
+      (window.innerHeight || document.documentElement.clientHeight)
+    ) {
+      return { offScreen: true, bottom: bounding.bottom };
+    }
 
-      left: 0
+    return { offScreen: false };
+  }
 
-      right: 250.25733947753906
+  private getHorizantalOffset(el) {
+    const bounding = el.getBoundingClientRect();
 
-      top: -575.5330200195312
+    if (bounding.left < 0) {
+      return { offScreen: true, left: bounding.left };
+    }
 
-      width: 250.25733947753906
+    if (bounding.right >
+      (window.innerWidth || document.documentElement.clientWidth)) {
+        return { offScreen: true, right: bounding.right }
+      }
+    
+    return { offScreen: false };
+  }
 
-      x: 0
+  getSideVisibilies = (elem): SidesOffscreen => {
+    // Get element's bounding
+    const bounding = elem.getBoundingClientRect();
 
-      y: -575.5330200195312
-   */
+    // Check if it's out of the viewport on each side
+    let sides = {
+      top: bounding.top < 0,
+      left: bounding.left < 0,
+      bottom:
+        bounding.bottom >
+        (window.innerHeight || document.documentElement.clientHeight),
+      right:
+        bounding.right >
+        (window.innerWidth || document.documentElement.clientWidth),
+    };
 
-  private isElementVisible(el) {
-    var isOut = isOutOfViewport(el);
+    return {
+      ...sides,
+      any: sides.top || sides.left || sides.bottom || sides.right,
+      all: sides.top && sides.left && sides.bottom && sides.right,
+    };
+  };
+
+  private isElementVisible(el): boolean {
+    var isOut = this.getSideVisibilies(el);
     if (isOut.any) {
-      console.log('Not in the viewport! =(');
+      this.log("Not in the viewport! =(");
+      return false;
     } else {
-      console.log('In the viewport! =)');
+      this.log("In the viewport! =)");
+      return true;
     }
   }
-
-  // private isElementVisible(el) {
-  //   const rect = el.getBoundingClientRect();
-  //   console.log("🚀 ~ file: reposition-popup.service.ts ~ line 174 ~ RepositionPopupService ~ isElementVisible ~ rect", rect)
-  //   const vWidth = window.innerWidth || this.dom.documentElement.clientWidth;
-  //   console.log("🚀 ~ file: reposition-popup.service.ts ~ line 176 ~ RepositionPopupService ~ isElementVisible ~ vWidth", vWidth)
-  //   const vHeight = window.innerHeight || this.dom.documentElement.clientHeight;
-  //   console.log("🚀 ~ file: reposition-popup.service.ts ~ line 178 ~ RepositionPopupService ~ isElementVisible ~ vHeight", vHeight)
-  //   const efp = function (x, y) { return document.elementFromPoint(x, y) };
-  //   console.log("🚀 ~ file: reposition-popup.service.ts ~ line 180 ~ RepositionPopupService ~ isElementVisible ~ efp", efp)
-
-  //   console.log(el)
-
-  //   console.log(document.elementFromPoint(0, 0))
-
-  //   console.log(el.contains(efp(rect.left, rect.top)))
-  //   console.log(efp(rect.left, rect.top))
-  //   console.log(el.contains(efp(rect.right, rect.top)));
-  //   console.log(efp(rect.right, rect.top));
-  //   console.log(el.contains(efp(rect.right, rect.bottom)));
-  //   console.log(efp(rect.right, rect.bottom));
-  //   console.log(el.contains(efp(rect.left, rect.bottom)));
-  //   console.log(efp(rect.left, rect.bottom));
-
-  //   // Return false if it's not in the viewport
-  //   if (rect.right < 0 || rect.bottom < 0
-  //     || rect.left > vWidth || rect.top > vHeight)
-  //     return false;
-
-  //   // Return true if any of its four corners are visible
-  //   return (
-  //     el.contains(efp(rect.left, rect.top))
-  //     || el.contains(efp(rect.right, rect.top))
-  //     || el.contains(efp(rect.right, rect.bottom))
-  //     || el.contains(efp(rect.left, rect.bottom))
-  //   );
-  // }
 
   private getAnchorId(): string {
-    const popupTitle = this.dom.getElementsByClassName('popover-title')[0].innerHTML;
+    const popupTitle = this.dom.getElementsByClassName("popover-title")[0]
+      .innerHTML;
     const tourStep = appTourSteps.find((step) => step.title === popupTitle);
 
-    if (!tourStep) throw new Error(`No tour step was found for the node with ${popupTitle}`);
+    if (!tourStep)
+      throw new Error(`No tour step was found for the node with ${popupTitle}`);
 
     return tourStep.anchorId;
   }
 
-  private getNodeAbsolutePosition() {
-
-  }
-
-  private moveNodeIntoViewport(): Position {
-    return topLeft;
-  }
-
-  private moveNode(direction: Direction) {
-    return topLeft;
-  }
-
-  private scrollToNode() {
-
-  }
-
-  private getViewportSize() {
-
-  }
-
+  private scrollToNode() {}
 }
