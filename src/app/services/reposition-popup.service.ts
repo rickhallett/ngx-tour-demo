@@ -125,7 +125,7 @@ export class RepositionPopupService {
   }
 
   // BUG: this function is running at some point BEFORE the popup is ending up off screen, thereby making
-  // any code reliant on it completely fucking broken.
+  // any code reliant on it completely FUCKING BROKEN. 
   getSideVisibilies = (elem): SidesOffscreen => {
     // Get element's bounding
     const bounding = elem.getBoundingClientRect();

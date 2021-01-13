@@ -27,13 +27,13 @@ export const appTourSteps: TSINgxbStepOption[] = [
     //     placement: "bottom",
     //     title: "angular-ui-tour",
     // },
-    {
-        anchorId: "usage",
-        // route: "docs",
-        content: "Energy management is everything",
-        placement: "bottom",
-        title: "Empty your cup"
-    },
+    // {
+    //     anchorId: "usage",
+    //     // route: "docs",
+    //     content: "Energy management is everything",
+    //     placement: "bottom",
+    //     title: "Empty your cup"
+    // },
     {
         anchorId: "docs.tourService",
         route: "docs",
