@@ -12,6 +12,8 @@ import { TSINgxbStepOption, TSINgxRoute, blogTourSteps, blogTourStartingRoute } 
 export class BlogComponent implements OnInit {
   private log: BrowserLogger;
 
+  // BUG: 'cannot find next step, no current step'
+  // This never occured before providing the TourService individually for components; is it a library limitation?
   private tourSteps: TSINgxbStepOption[] = blogTourSteps;
   private tourRoute: TSINgxRoute = blogTourStartingRoute;
 
