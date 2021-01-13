@@ -21,6 +21,7 @@ export class BrowserLoggerService {
                 return;
             }
             
+            // NB: this won't print browser objects like DOMRect...
             if (Array.from(Object.keys(obj)).length === 0) {
                 console.log(log, colorStyle);
                 return;
