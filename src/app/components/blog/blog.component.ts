@@ -62,6 +62,10 @@ export class BlogComponent implements OnInit, OnDestroy {
      */
     this.tourService.initialize(this.tourSteps, this.tourRoute);
 
+    // this.tourSteps.forEach(step => {
+    //   this.tourService.register(step);
+    // })
+
     this.tourService.start$.subscribe((step: IStepOption) => {
       this.log("tour start:", step);
     });

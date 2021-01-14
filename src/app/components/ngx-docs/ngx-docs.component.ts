@@ -87,7 +87,7 @@ export class NgxDocsComponent
 
     this.tourSubscription.push(
       this.tourService.anchorUnregister$.subscribe((sanchor: string) => {
-        this.log("anchor unregistered:", sanchor);
+        this.log("**** anchor unregistered:", sanchor);
       })
     );
   }
@@ -101,6 +101,10 @@ export class NgxDocsComponent
   }
 
   ngOnDestroy(): void {
+    this.tourSteps.forEach(step => {
+      this.tourService.unregister(step.anchorId);
+    })
+    
     this.tourSubscription.forEach((sub) => sub.unsubscribe()); // NG: has no effect on allowing BlogComponent to re-init TourService
   }
 }

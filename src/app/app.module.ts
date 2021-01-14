@@ -37,17 +37,6 @@ import { RepositionPopupService } from "./services/reposition-popup.service";
 import { BrowserLoggerService } from "./services/browser-logger.service";
 import { TourService } from "ngx-tour-core";
 
-// TECH-SUPPORT: attempted to provide a high level factory to NgModule. Nope.
-const tourServiceFactory = (router: Router) => {
-  return new TourService(router);
-};
-
-let tourServiceProvider = {
-  provide: TourService,
-  useFactory: tourServiceFactory,
-  deps: [Router],
-};
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,7 +76,7 @@ let tourServiceProvider = {
     PositioningService,
     RepositionPopupService,
     BrowserLoggerService,
-    tourServiceProvider,
+    TourService
   ],
   bootstrap: [AppComponent],
 })
