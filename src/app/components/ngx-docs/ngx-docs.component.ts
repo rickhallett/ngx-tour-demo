@@ -1,20 +1,24 @@
-import { AfterViewChecked, AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { TourService, IStepOption } from 'ngx-tour-ngx-bootstrap';
+import { TourStepTemplateService } from 'ngx-tour-ngx-bootstrap/tour-step-template.service';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import { BrowserLoggerService, BrowserLogger } from '../../services/browser-logger.service';
 import { RepositionPopupService } from '../../services/reposition-popup.service';
-import { TSINgxbStepOption, appTourSteps, TSINgxRoute, appTourStartingRoute } from '../../tours/docs-tour';
+import { TSINgxbStepOption, docsTourSteps, TSINgxRoute, docsTourStartingRoute } from '../../tours/docs-tour';
 
 @Component({
   selector: 'app-ngx-docs',
   templateUrl: './ngx-docs.component.html',
   styleUrls: ['./ngx-docs.component.css'],
-  // providers: [TourService] // using TourService at the component level breaks the 'next step' functionality
+  // providers: [TourService, /* TourStepTemplateService */] // using TourService at the component level breaks the 'next step' functionality
 })
-export class NgxDocsComponent implements OnInit, AfterViewInit, AfterViewChecked {
+export class NgxDocsComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
   private log: BrowserLogger;
 
-  private tourSteps: TSINgxbStepOption[] = appTourSteps;
-  private tourRoute: TSINgxRoute = appTourStartingRoute
+  private tourSubscription: Subscription[] = [];
+  private tourSteps: TSINgxbStepOption[] = docsTourSteps;
+  private tourRoute: TSINgxRoute = docsTourStartingRoute
 
   constructor(private repositionPopupService: RepositionPopupService, private browserLoggerService: BrowserLoggerService, public tourService: TourService) {
     this.log = browserLoggerService.createLog('NgxDocsComponent', 'green');
@@ -32,33 +36,31 @@ export class NgxDocsComponent implements OnInit, AfterViewInit, AfterViewChecked
   }
 
   ngOnInit(): void {
-    this.log('repositionPopupService:', this.repositionPopupService);
-
     this.tourService.initialize$.subscribe((steps: IStepOption[]) => {
       this.log('tour configured with these steps:', steps);
     });
 
     this.tourService.initialize(this.tourSteps, this.tourRoute);
 
-    this.tourService.start$.subscribe((step: IStepOption) => {
+    this.tourSubscription.push(this.tourService.start$.subscribe((step: IStepOption) => {
       this.log('tour start:', step);
-    });
+    }));
 
-    this.tourService.end$.subscribe((step: any) => {
+    this.tourSubscription.push(this.tourService.end$.subscribe((step: any) => {
       this.log('tour end:', step);
-    });
+    }));
 
-    this.tourService.stepShow$.subscribe((step: IStepOption) => {
+    this.tourSubscription.push(this.tourService.stepShow$.subscribe((step: IStepOption) => {
       this.log('step shown:', step);
-    });
+    }));
 
-    this.tourService.anchorRegister$.subscribe((anchor: string) => {
+    this.tourSubscription.push(this.tourService.anchorRegister$.subscribe((anchor: string) => {
       this.log('anchor registered:', anchor);
-    });
+    }));
 
-    this.tourService.anchorUnregister$.subscribe((sanchor: string) => {
+    this.tourSubscription.push(this.tourService.anchorUnregister$.subscribe((sanchor: string) => {
       this.log('anchor unregistered:', sanchor);
-    });
+    }));
   }
 
   ngAfterViewInit(): void {
@@ -72,6 +74,11 @@ export class NgxDocsComponent implements OnInit, AfterViewInit, AfterViewChecked
     // setTimeout(() => {
     //   
     // }, 1000);
+  }
+
+  ngOnDestroy(): void {
+    this.tourSubscription.forEach(sub => sub.unsubscribe());
+    // delete this.tourService;
   }
 
 }

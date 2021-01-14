@@ -60,6 +60,7 @@ import { BrowserLoggerService } from "./services/browser-logger.service";
     HttpClientModule,
     PopoverModule,
     TourNgxBootstrapModule.forRoot(),
+    // TourNgxBootstrapModule,
   ],
   providers: [
     PopoverConfig,

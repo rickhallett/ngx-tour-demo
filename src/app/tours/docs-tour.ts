@@ -9,11 +9,11 @@ export interface TSINgxRoute {
     route: string;
 }
 
-export const appTourStartingRoute: TSINgxRoute = {
+export const docsTourStartingRoute: TSINgxRoute = {
     route: "docs", // acts as the 'base' route. If not defined on each step, this is where it returns to
 };
 
-export const appTourSteps: TSINgxbStepOption[] = [
+export const docsTourSteps: TSINgxbStepOption[] = [
     {
         anchorId: "start.tour",
         content: "Welcome to the Ngx-Tour Docs tour!",
