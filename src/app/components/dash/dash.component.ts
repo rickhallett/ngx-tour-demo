@@ -6,7 +6,6 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
   styleUrls: ["./dash.component.css"],
 })
 export class DashComponent implements OnInit, OnDestroy {
-  
   ngOnInit() {}
 
   ngOnDestroy() {}

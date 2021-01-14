@@ -30,7 +30,7 @@ ngx-guided-tour .tour-step.tour-bottom-right .tour-arrow::before,
 ngx-guided-tour .tour-step.tour-bottom-left .tour-arrow::before {
   width: 0;
   height: 0;
-  content: '';
+  content: "";
   z-index: 2;
   border-bottom: 1rem solid #fff;
   border-left: 1rem solid transparent;
@@ -42,7 +42,7 @@ ngx-guided-tour .tour-step.tour-top-right .tour-arrow::before,
 ngx-guided-tour .tour-step.tour-top-left .tour-arrow::before {
   width: 0;
   height: 0;
-  content: '';
+  content: "";
   z-index: 2;
   border-top: 1rem solid #fff;
   border-left: 1rem solid transparent;
@@ -52,7 +52,7 @@ ngx-guided-tour .tour-step.tour-top-left .tour-arrow::before {
 ngx-guided-tour .tour-step.tour-left .tour-arrow::before {
   width: 0;
   height: 0;
-  content: '';
+  content: "";
   z-index: 2;
   border-left: 1rem solid #fff;
   border-bottom: 1rem solid transparent;
@@ -62,7 +62,7 @@ ngx-guided-tour .tour-step.tour-left .tour-arrow::before {
 ngx-guided-tour .tour-step.tour-right .tour-arrow::before {
   width: 0;
   height: 0;
-  content: '';
+  content: "";
   z-index: 2;
   border-right: 1rem solid #fff;
   border-bottom: 1rem solid transparent;
@@ -107,7 +107,7 @@ ngx-guided-tour .guided-tour-user-input-mask {
 
 ngx-guided-tour .guided-tour-spotlight-overlay {
   position: fixed;
-  box-shadow: 0 0 0 9999px rgba(0, 0, 0, .7), 0 0 1.5rem rgba(0, 0, 0, .5);
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7), 0 0 1.5rem rgba(0, 0, 0, 0.5);
 }
 
 ngx-guided-tour .tour-orb {
@@ -128,7 +128,7 @@ ngx-guided-tour .tour-orb .tour-orb-ring {
 }
 
 ngx-guided-tour .tour-orb .tour-orb-ring:after {
-  content: '';
+  content: "";
   display: inline-block;
   height: 100%;
   width: 100%;

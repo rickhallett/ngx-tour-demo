@@ -5,7 +5,12 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from "@angular/forms";
 
 import { TourNgxBootstrapModule } from "ngx-tour-ngx-bootstrap";
-import { PopoverModule, PopoverConfig, ComponentLoaderFactory, PositioningService } from "ngx-bootstrap";
+import {
+  PopoverModule,
+  PopoverConfig,
+  ComponentLoaderFactory,
+  PositioningService,
+} from "ngx-bootstrap";
 
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./components/home/home.component";
@@ -32,16 +37,15 @@ import { RepositionPopupService } from "./services/reposition-popup.service";
 import { BrowserLoggerService } from "./services/browser-logger.service";
 import { TourService } from "ngx-tour-core";
 
-
 const tourServiceFactory = (router: Router) => {
   return new TourService(router);
 };
 
-let tourServiceProvider =
-  { provide: TourService,
-    useFactory: tourServiceFactory,
-    deps: [Router]
-  };
+let tourServiceProvider = {
+  provide: TourService,
+  useFactory: tourServiceFactory,
+  deps: [Router],
+};
 
 @NgModule({
   declarations: [
@@ -62,7 +66,7 @@ let tourServiceProvider =
     CoverComponent,
     BlogComponent,
     NgxDocsComponent,
-    NgxBootstrapComponent
+    NgxBootstrapComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +84,7 @@ let tourServiceProvider =
     PositioningService,
     RepositionPopupService,
     BrowserLoggerService,
-    tourServiceProvider
+    tourServiceProvider,
   ],
   bootstrap: [AppComponent],
 })
@@ -89,5 +93,3 @@ export class AppModule {
     console.log("Routes: ", JSON.stringify(router.config, null, 8));
   }
 }
-
-

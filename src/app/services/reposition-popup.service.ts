@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  Inject,
-  ElementRef,
-} from "@angular/core";
+import { Injectable, Inject, ElementRef } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { BrowserLoggerService, BrowserLogger } from "./browser-logger.service";
 import { docsTourSteps } from "../tours/docs-tour";
@@ -24,22 +20,22 @@ type SidesOffscreen = {
 };
 
 type HorizantalOffset = {
-  offScreen: boolean,
-  left?: number,
-  right?: number
-}
+  offScreen: boolean;
+  left?: number;
+  right?: number;
+};
 
 type VerticalOffset = {
-  offScreen: boolean,
-  top?: number,
-  bottom?: number
-}
+  offScreen: boolean;
+  top?: number;
+  bottom?: number;
+};
 
 type PopupNode = {
   anchorId: string;
   classes: string[];
   elementRef: ElementRef;
-  verticalOffset: VerticalOffset
+  verticalOffset: VerticalOffset;
   horizantalOffset: HorizantalOffset;
   visible: boolean;
   boundingClientSideVisibility: SidesOffscreen;
@@ -119,11 +115,13 @@ export class RepositionPopupService {
       return { offScreen: true, left: bounding.left };
     }
 
-    if (bounding.right >
-      (window.innerWidth || document.documentElement.clientWidth)) {
-        return { offScreen: true, right: bounding.right }
-      }
-    
+    if (
+      bounding.right >
+      (window.innerWidth || document.documentElement.clientWidth)
+    ) {
+      return { offScreen: true, right: bounding.right };
+    }
+
     return { offScreen: false };
   }
 
@@ -139,10 +137,12 @@ export class RepositionPopupService {
       left: bounding.left < 0,
       bottom:
         bounding.bottom >
-        (/* window.innerHeight || NB - these values are NOT equivalent!!!) */ document.documentElement.clientHeight),
+        /* window.innerHeight || NB - these values are NOT equivalent!!!) */ document
+          .documentElement.clientHeight,
       right:
         bounding.right >
-        (/* window.innerWidth || - these values are NOT equivalent!!! */ document.documentElement.clientWidth),
+        /* window.innerWidth || - these values are NOT equivalent!!! */ document
+          .documentElement.clientWidth,
     };
 
     return {
@@ -162,24 +162,26 @@ export class RepositionPopupService {
     }
   }
 
-
   public scrollIntoViewIfNeeded() {
     const popup = this.getNode();
     if (!popup) return;
 
-    this.log('popup found:', popup);
+    this.log("popup found:", popup);
 
     if (popup.visible) {
-      this.log('Popup already visible!');
+      this.log("Popup already visible!");
       return;
     }
 
-    this.log('BOYO ALERT');
+    this.log("BOYO ALERT");
     popup.elementRef.nativeElement.scrollIntoView({ behavior: "smooth" });
 
     // TODO: this needs to be sensitive to whether the offset needed is x/y axis
     const offset = 50;
-    window.scroll({ top: (popup.elementRef.nativeElement.offsetTop - offset), left: 0, behavior: 'smooth' });
-    
+    window.scroll({
+      top: popup.elementRef.nativeElement.offsetTop - offset,
+      left: 0,
+      behavior: "smooth",
+    });
   }
 }

@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { NgxDocsComponent } from './ngx-docs.component';
+import { NgxDocsComponent } from "./ngx-docs.component";
 
-describe('NgxDocsComponent', () => {
+describe("NgxDocsComponent", () => {
   let component: NgxDocsComponent;
   let fixture: ComponentFixture<NgxDocsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NgxDocsComponent ]
-    })
-    .compileComponents();
+      declarations: [NgxDocsComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('NgxDocsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

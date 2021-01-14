@@ -1,13 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TourNgxBootstrapModule, TourService } from 'ngx-tour-ngx-bootstrap';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { TourNgxBootstrapModule, TourService } from "ngx-tour-ngx-bootstrap";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    TourNgxBootstrapModule
-  ],
+  imports: [CommonModule, TourNgxBootstrapModule],
   providers: [TourService],
-  declarations: []
+  declarations: [],
 })
-export class SharedModule { }
+export class SharedModule {}
