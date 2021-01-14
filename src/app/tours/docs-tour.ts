@@ -10,13 +10,13 @@ export interface TSINgxRoute {
 }
 
 export const appTourStartingRoute: TSINgxRoute = {
-    route: "dash", // acts as the 'base' route. If not defined on each step, this is where it returns to
+    route: "docs", // acts as the 'base' route. If not defined on each step, this is where it returns to
 };
 
 export const appTourSteps: TSINgxbStepOption[] = [
     {
         anchorId: "start.tour",
-        content: "Welcome to the Ngx-Tour tour!",
+        content: "Welcome to the Ngx-Tour Docs tour!",
         placement: "right",
         title: "Welcome",
     },

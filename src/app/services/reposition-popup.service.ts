@@ -7,7 +7,7 @@ import {
 } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { BrowserLoggerService, BrowserLogger } from "./browser-logger.service";
-import { appTourSteps } from "../tours/app-tour";
+import { appTourSteps } from "../tours/docs-tour";
 
 /**
  * TODO: why does safari return negative top values for getBoundingClientRect?
