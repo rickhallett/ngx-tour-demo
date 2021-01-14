@@ -7,8 +7,22 @@ import { blogTourStartingRoute, blogTourSteps, TSINgxbStepOption, TSINgxRoute } 
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.css']
+  styleUrls: ['./blog.component.css'],
+  providers: [TourService]
 })
+
+// providers: [
+//   {
+//     provide: TourService,
+//     useFactory: tourServiceFactory,
+//     multi: true
+//   }
+//   ]
+
+// export function tourServiceFactory = (tourService: TourService) => {
+//     return new HeroService(logger, userService.user.isAuthorized);
+// };
+
 export class BlogComponent implements OnInit, OnDestroy {
   private log: BrowserLogger;
 

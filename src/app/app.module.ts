@@ -59,7 +59,7 @@ import { BrowserLoggerService } from "./services/browser-logger.service";
     ReactiveFormsModule,
     HttpClientModule,
     PopoverModule,
-    TourNgxBootstrapModule.forRoot(),
+    // TourNgxBootstrapModule.forRoot(),
     // TourNgxBootstrapModule,
   ],
   providers: [

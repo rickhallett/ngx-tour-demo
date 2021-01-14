@@ -11,6 +11,7 @@ import { TSINgxbStepOption, docsTourSteps, TSINgxRoute, docsTourStartingRoute } 
   selector: 'app-ngx-docs',
   templateUrl: './ngx-docs.component.html',
   styleUrls: ['./ngx-docs.component.css'],
+  // providers: [TourService]
   // providers: [TourService, /* TourStepTemplateService */] // using TourService at the component level breaks the 'next step' functionality
 })
 export class NgxDocsComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
