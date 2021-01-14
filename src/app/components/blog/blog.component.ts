@@ -47,6 +47,19 @@ export class BlogComponent implements OnInit, OnDestroy {
       this.log("tour configured with these steps:", steps);
     });
 
+    // TECH-SUPPORT: this is the second call to initialize. Despite multiple attempts at configuring
+    // TourService injection scope, I cannot get Angular to provide TourService here unless I provide
+    // it within app.module using .forRoot() (I believe this was the authors intention; I'm not sure if
+    // if it also allows for component scope use cases...)
+
+    /**
+     * Options...
+     * 
+     * 1) Find the right configuration for a scoped/shared TourService
+     * 2) Create a service factory within the library
+     * 3) Configure Angular to call a factory when it provides TourService
+     * 4) Go sell beer on the beach.
+     */
     this.tourService.initialize(this.tourSteps, this.tourRoute);
 
     this.tourService.start$.subscribe((step: IStepOption) => {

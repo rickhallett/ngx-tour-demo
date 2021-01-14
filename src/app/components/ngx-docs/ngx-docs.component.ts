@@ -57,6 +57,8 @@ export class NgxDocsComponent
       this.log("tour configured with these steps:", steps);
     });
 
+    // TECH-SUPPORT: this is the first call to tourService.initialize, provided /docs is hit first.
+    // This works without apparent issue.
     this.tourService.initialize(this.tourSteps, this.tourRoute);
 
     this.tourSubscription.push(

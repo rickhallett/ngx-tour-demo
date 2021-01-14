@@ -80,6 +80,7 @@ export class RepositionPopupService {
     };
   }
 
+  // TODO: if this is kept, it needs generalising for all tours, not just docs
   private getAnchorId(): string {
     const popupTitle = this.dom.getElementsByClassName("popover-title")[0]
       .innerHTML;
@@ -125,8 +126,6 @@ export class RepositionPopupService {
     return { offScreen: false };
   }
 
-  // BUG: this function is running at some point BEFORE the popup is ending up off screen, thereby making
-  // any code reliant on it completely FUCKING BROKEN. (including the scroll into view)
   getSideVisibilies = (elem): SidesOffscreen => {
     // Get element's bounding
     const bounding = elem.getBoundingClientRect();
@@ -135,14 +134,8 @@ export class RepositionPopupService {
     let sides = {
       top: bounding.top < 0,
       left: bounding.left < 0,
-      bottom:
-        bounding.bottom >
-        /* window.innerHeight || NB - these values are NOT equivalent!!!) */ document
-          .documentElement.clientHeight,
-      right:
-        bounding.right >
-        /* window.innerWidth || - these values are NOT equivalent!!! */ document
-          .documentElement.clientWidth,
+      bottom: bounding.bottom > document.documentElement.clientHeight,
+      right: bounding.right > document.documentElement.clientWidth,
     };
 
     return {

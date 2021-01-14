@@ -37,6 +37,7 @@ import { RepositionPopupService } from "./services/reposition-popup.service";
 import { BrowserLoggerService } from "./services/browser-logger.service";
 import { TourService } from "ngx-tour-core";
 
+// TECH-SUPPORT: attempted to provide a high level factory to NgModule. Nope.
 const tourServiceFactory = (router: Router) => {
   return new TourService(router);
 };
@@ -75,8 +76,10 @@ let tourServiceProvider = {
     ReactiveFormsModule,
     HttpClientModule,
     PopoverModule,
+
+    // TECH-SUPPORT: providing here, and instantiating in a component constructor is so far
+    // the only way I have got this to work.
     TourNgxBootstrapModule.forRoot(),
-    // TourNgxBootstrapModule,
   ],
   providers: [
     PopoverConfig,
