@@ -1,7 +1,5 @@
 import { AfterViewChecked, AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { TourService, IStepOption } from 'ngx-tour-ngx-bootstrap';
-import { TourStepTemplateService } from 'ngx-tour-ngx-bootstrap/tour-step-template.service';
-import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { BrowserLoggerService, BrowserLogger } from '../../services/browser-logger.service';
 import { RepositionPopupService } from '../../services/reposition-popup.service';
@@ -70,16 +68,10 @@ export class NgxDocsComponent implements OnInit, AfterViewInit, AfterViewChecked
 
   ngAfterViewChecked(): void {
     this.log('ngAfterViewChecked');
-
-    // HACK ALERT
-    // setTimeout(() => {
-    //   
-    // }, 1000);
   }
 
   ngOnDestroy(): void {
-    this.tourSubscription.forEach(sub => sub.unsubscribe());
-    // delete this.tourService;
+    this.tourSubscription.forEach(sub => sub.unsubscribe()); // NG: has no effect on allowing BlogComponent to re-init TourService
   }
 
 }

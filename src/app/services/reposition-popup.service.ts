@@ -1,12 +1,11 @@
 import {
   Injectable,
-  RendererFactory2,
-  Renderer2,
   Inject,
   ElementRef,
 } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { BrowserLoggerService, BrowserLogger } from "./browser-logger.service";
+import { docsTourSteps } from "../tours/docs-tour";
 
 /**
  * TODO: why does safari return negative top values for getBoundingClientRect?
@@ -50,11 +49,9 @@ type PopupNode = {
 
 @Injectable()
 export class RepositionPopupService {
-  private renderer: Renderer2;
   private log: BrowserLogger;
 
   constructor(
-    private rendererFactory: RendererFactory2,
     private browserLoggerService: BrowserLoggerService,
     @Inject(DOCUMENT) private dom
   ) {
@@ -63,12 +60,8 @@ export class RepositionPopupService {
       "yellow"
     );
 
-    this.renderer = rendererFactory.createRenderer(null, null);
-    this.log("renderer:", this.renderer);
     this.log("dom:", this.dom);
   }
-
-  // BROWSER TEST POINT - do properties return consistently with user experience?
 
   public getNode(): PopupNode {
     // NB: will there ever be more than one popup onscreen? If so, this will only capture the first.
@@ -89,6 +82,17 @@ export class RepositionPopupService {
       boundingClientSideVisibility,
       visible: this.isElementVisible(boundingClientSideVisibility),
     };
+  }
+
+  private getAnchorId(): string {
+    const popupTitle = this.dom.getElementsByClassName("popover-title")[0]
+      .innerHTML;
+    const tourStep = docsTourSteps.find((step) => step.title === popupTitle);
+
+    if (!tourStep)
+      throw new Error(`No tour step was found for the node with ${popupTitle}`);
+
+    return tourStep.anchorId;
   }
 
   private getVerticalOffset(el) {
@@ -129,9 +133,6 @@ export class RepositionPopupService {
     // Get element's bounding
     const bounding = elem.getBoundingClientRect();
 
-    console.log('getSideVisibilities -> elem', elem);
-    console.log('getSideVisibilies -> popup rect:', bounding);
-
     // Check if it's out of the viewport on each side
     let sides = {
       top: bounding.top < 0,
@@ -161,22 +162,6 @@ export class RepositionPopupService {
     }
   }
 
-  private getAnchorId(): string {
-    // const popupTitle = this.dom.getElementsByClassName("popover-title")[0]
-    //   .innerHTML;
-    // const tourStep = appTourSteps.find((step) => step.title === popupTitle);
-
-    // if (!tourStep)
-    //   throw new Error(`No tour step was found for the node with ${popupTitle}`);
-
-    // return tourStep.anchorId;
-
-    return 'We dont really need this...remove';
-  }
-
-  private scrollToNode(el) {
-    el.scrollIntoView();
-  }
 
   public scrollIntoViewIfNeeded() {
     const popup = this.getNode();

@@ -1,3 +1,7 @@
+/**
+ * ALL DEPRECATED WITH USE OF NATIVE el.scrollIntoView()
+ */
+
 import { ElementRef } from "@angular/core";
 
 /**

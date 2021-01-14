@@ -9,7 +9,5 @@ export class DashComponent implements OnInit, OnDestroy {
   
   ngOnInit() {}
 
-  ngOnDestroy() {
-    console.log('dash component destroyed')
-  }
+  ngOnDestroy() {}
 }

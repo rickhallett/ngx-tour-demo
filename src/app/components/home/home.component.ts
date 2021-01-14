@@ -1,10 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 
-import { IStepOption, TourService } from "ngx-tour-ngx-bootstrap";
-import { INgxbStepOption } from 'ngx-tour-ngx-bootstrap/step-option.interface';
 import { BrowserLogger, BrowserLoggerService } from "../../services/browser-logger.service";
-import { TSINgxbStepOption, TSINgxRoute } from "../../tours/docs-tour";
 
 @Component({
   selector: 'app-home',
