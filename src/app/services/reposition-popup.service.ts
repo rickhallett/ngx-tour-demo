@@ -130,9 +130,6 @@ export class RepositionPopupService {
     // Get element's bounding
     const bounding = elem.getBoundingClientRect();
 
-    console.log('getSideVisibilities -> elem', elem);
-    console.log('getSideVisibilies -> popup rect:', bounding);
-
     // Check if it's out of the viewport on each side
     let sides = {
       top: bounding.top < 0,

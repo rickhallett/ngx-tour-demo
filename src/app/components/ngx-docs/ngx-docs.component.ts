@@ -1,5 +1,6 @@
-import { AfterViewChecked, AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { TourService, IStepOption } from 'ngx-tour-ngx-bootstrap';
+import { StateService } from '../../services/state-service';
 import { BrowserLoggerService, BrowserLogger } from '../../services/browser-logger.service';
 import { RepositionPopupService } from '../../services/reposition-popup.service';
 
@@ -8,25 +9,15 @@ import { RepositionPopupService } from '../../services/reposition-popup.service'
   templateUrl: './ngx-docs.component.html',
   styleUrls: ['./ngx-docs.component.css']
 })
-export class NgxDocsComponent implements OnInit, AfterViewInit, AfterViewChecked {
+export class NgxDocsComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
   private log: BrowserLogger;
 
-  constructor(private repositionPopupService: RepositionPopupService, private browserLoggerService: BrowserLoggerService, private tourService: TourService) {
+  constructor(private repositionPopupService: RepositionPopupService, private browserLoggerService: BrowserLoggerService, private stateService: StateService) {
     this.log = browserLoggerService.createLog('NgxDocsComponent', 'green');
-
-    this.tourService.stepShow$.subscribe((step: IStepOption) => {
-      this.log('step changed, scrolling to view...');
-
-      // HACK ALERT
-      setTimeout(() => {
-        this.repositionPopupService.scrollIntoViewIfNeeded();
-      }, 0)
-      
-    });
   }
 
   ngOnInit(): void {
-    this.log('repositionPopupService:', this.repositionPopupService);
+    this.log('ngOnInit');
   }
 
   ngAfterViewInit(): void {
@@ -35,11 +26,15 @@ export class NgxDocsComponent implements OnInit, AfterViewInit, AfterViewChecked
 
   ngAfterViewChecked(): void {
     this.log('ngAfterViewChecked');
+    this.log('state:', this.stateService);
+  }
 
-    // HACK ALERT
-    // setTimeout(() => {
-    //   
-    // }, 1000);
+  ngOnDestroy(): void {
+    this.stateService.tour.end();
+  }  
+
+  startDocsTour(): void {
+    this.stateService.tour.startAt(2);
   }
 
 }

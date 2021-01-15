@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateService } from '../../services/state-service';
 
 @Component({
   selector: 'app-blog',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogComponent implements OnInit {
 
-  constructor() { }
+  constructor(private stateService: StateService) { }
 
   ngOnInit() {
   }
+
+  startBlogTour(): void {
+    this.stateService.tour.startAt(this.stateService.findAnchorById('start.blog.tour'));
+  }
+
+  
 
 }

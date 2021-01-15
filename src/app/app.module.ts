@@ -30,6 +30,7 @@ import { NgxDocsComponent } from "./components/ngx-docs/ngx-docs.component";
 
 import { RepositionPopupService } from "./services/reposition-popup.service";
 import { BrowserLoggerService } from "./services/browser-logger.service";
+import { StateService } from "./services/state-service";
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { BrowserLoggerService } from "./services/browser-logger.service";
     ComponentLoaderFactory,
     PositioningService,
     RepositionPopupService,
-    BrowserLoggerService
+    BrowserLoggerService,
+    StateService
   ],
   bootstrap: [AppComponent],
 })

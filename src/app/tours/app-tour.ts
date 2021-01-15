@@ -1,5 +1,8 @@
 import { IStepOption, TourService } from "ngx-tour-ngx-bootstrap";
 import { INgxbStepOption } from 'ngx-tour-ngx-bootstrap/step-option.interface';
+import { blogTourSteps } from "./blogs-tour";
+
+import { docsTourSteps } from './docs-tour';
 
 export interface TSINgxbStepOption extends INgxbStepOption {
     containerClass?: string;
@@ -21,121 +24,23 @@ export const appTourSteps: TSINgxbStepOption[] = [
         title: "Welcome",
     },
     {
-        anchorId: "angular-ui-tour",
-        route: "docs",
-        content: "Thanks to angular-ui-tour for the inspiration for the library",
+        anchorId: "start.tour",
+        content: "Welcome to the Ngx-Tour tour!",
         placement: "bottom",
-        title: "angular-ui-tour",
+        title: "Bottom",
     },
     {
-        anchorId: "usage",
-        route: "docs",
-        content: "Energy management is everything",
-        placement: "bottom",
-        title: "Empty your cup"
-    },
-    {
-        anchorId: "docs.tourService",
-        route: "docs",
-        content: "We show the way, you just pay",
-        placement: "bottom",
-        title: "Generally renders half way off screen"
-    },
-    {
-        anchorId: "docs.defaults",
-        route: "docs",
-        content: "And scroll all the way down (if placement == left, this will scroll but be partially off screen",
+        anchorId: "start.tour",
+        content: "Welcome to the Ngx-Tour tour!",
         placement: "left",
-        title: "If set to bottom, this renders completely off screen"
+        title: "Left",
     },
     {
-        anchorId: 'installation',
-        route: 'docs',
-        content: 'And scroll all the way back up...(if placement == top, this will be completely off screen)',
-        title: 'This will scroll up, and render on screen, if placement == bottom',
-        placement: 'top'
+        anchorId: "start.tour",
+        content: "Welcome to the Ngx-Tour tour!",
+        placement: "top",
+        title: "Top",
     },
-    {
-        anchorId: "dash.shipments",
-        route: "dash",
-        content: "We provide both ethical and unethical shipments globaally",
-        title: "Route Return",
-    },
-    {
-        anchorId: "docs.tourService",
-        route: "docs",
-        content: "controls the tour",
-        placement: "auto",
-        title: "notifications",
-    },
-    {
-        anchorId: "pricing.title",
-        route: "pricing",
-        content: "Buy anything you like at extortionate prices (we are not here for you benefit)",
-        placement: "auto",
-        title: "Deals deals deals",
-    },
-    {
-        anchorId: "pricing.containerClass",
-        route: "pricing",
-        content: "You can add custom container class.",
-        title: "Custom CSS Class",
-        containerClass: "custom-tour-class",
-    },
-    {
-        anchorId: "config.route",
-        route: 'docs',
-        content: "",
-        placement: "bottom",
-        title: "???",
-    },
-    {
-        anchorId: "config.placement.default",
-        route: 'docs',
-        content:
-            "Steps can be positioned around an anchor. You can even have multiple steps use the same anchor.",
-        title: "No Placement",
-    },
-    {
-        anchorId: "config.placement.default",
-        route: 'docs',
-        content: "Sliiide to the left.",
-        placement: "left",
-        title: "Left Placement",
-    },
-    {
-        anchorId: "config.placement.default",
-        route: 'docs',
-        content: "Sliiide to the right.",
-        placement: "right",
-        title: "Right Placement",
-    },
-    {
-        anchorId: "config.placement.default",
-        route: 'docs',
-        content: "Take it back now y'all.  One hop this time.",
-        placement: "bottom",
-        title: "Bottom Placement",
-    },
-    {
-        anchorId: "config.buttons.custom",
-        route: 'docs',
-        content: "You can set custom step button names",
-        title: "Button Titles",
-        prevBtnTitle: "My Prev",
-        nextBtnTitle: "My Next",
-        endBtnTitle: "My End",
-    },
-    {
-        anchorId: "hotkeys",
-        route: 'docs',
-        content: "Try using the hotkeys to navigate through the tour.",
-        title: "Hotkeys",
-    },
-    {
-        anchorId: "events",
-        route: 'docs',
-        content: "You can subscribe to events",
-        title: "Events",
-    },
+    ...docsTourSteps,
+    ...blogTourSteps
 ];
