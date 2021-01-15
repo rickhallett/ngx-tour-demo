@@ -65,8 +65,6 @@ export class RepositionPopupService {
     );
 
     this.renderer = rendererFactory.createRenderer(null, null);
-    this.log("renderer:", this.renderer);
-    this.log("dom:", this.dom);
   }
 
   // BROWSER TEST POINT - do properties return consistently with user experience?
@@ -182,14 +180,11 @@ export class RepositionPopupService {
     const popup = this.getNode();
     if (!popup) return;
 
-    this.log("popup found:", popup);
-
     if (popup.visible) {
       this.log("Popup already visible!");
       return;
     }
 
-    this.log("BOYO ALERT");
     popup.elementRef.nativeElement.scrollIntoView({ behavior: "smooth" });
 
     // TODO: this needs to be sensitive to whether the offset needed is x/y axis

@@ -21,7 +21,6 @@ import { ChartComponent } from "./components/chart/chart.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { DashComponent } from "./components/dash/dash.component";
 import { OrdersComponent } from "./components/order/order.component";
-import { ProductsComponent } from "./components/product/product.component";
 import { CustomersComponent } from "./components/customer/customer.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { PricingComponent } from "./components/pricing/pricing.component";
@@ -43,7 +42,6 @@ import { StateService } from "./services/state-service";
     NavbarComponent,
     DashComponent,
     OrdersComponent,
-    ProductsComponent,
     CustomersComponent,
     NotFoundComponent,
     PricingComponent,

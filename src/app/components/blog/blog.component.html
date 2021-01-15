@@ -1,6 +1,6 @@
 <!-- <tour-step-template></tour-step-template> -->
 
-<div class="container">
+<div class="container" id="#top">
   <header class="blog-header py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
@@ -49,20 +49,17 @@
     </nav>
   </div>
 
-  <a
-    href="https://github.com/isaacplmann/ngx-tour"
-    rel="nofollow"
-    target="_blank"
-    class="btn btn-default"
-    >View on GitHub</a
-  >
+  <div class="container m-3">
   <a
     style="cursor: pointer"
     (click)="startBlogTour()"
     class="btn btn-primary"
     tourAnchor="start.blog.tour"
-    >Start Demo Tour</a
+    >Start Blog Demo Tour</a
   >
+  </div>
+
+  
 
   <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
@@ -97,7 +94,6 @@
         <img
           class="card-img-right flex-auto d-none d-md-block"
           data-src="holder.js/200x250?theme=thumb"
-          alt="Card image cap"
         />
       </div>
     </div>
@@ -118,7 +114,6 @@
         <img
           class="card-img-right flex-auto d-none d-md-block"
           data-src="holder.js/200x250?theme=thumb"
-          alt="Card image cap"
         />
       </div>
     </div>
@@ -327,10 +322,6 @@
 
 <footer class="blog-footer">
   <p>
-    Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by
-    <a href="https://twitter.com/mdo">@mdo</a>.
-  </p>
-  <p>
-    <a href="#">Back to top</a>
+    <a href="blog#top">Back to top</a>
   </p>
 </footer>

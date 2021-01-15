@@ -12,7 +12,6 @@ import { NgxDocsComponent } from "./components/ngx-docs/ngx-docs.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { OrdersComponent } from "./components/order/order.component";
 import { PricingComponent } from "./components/pricing/pricing.component";
-import { ProductsComponent } from "./components/product/product.component";
 
 const routes: Routes = [
   {
@@ -30,10 +29,6 @@ const routes: Routes = [
       {
         path: "orders",
         component: OrdersComponent,
-      },
-      {
-        path: "products",
-        component: ProductsComponent,
       },
       {
         path: "customers",

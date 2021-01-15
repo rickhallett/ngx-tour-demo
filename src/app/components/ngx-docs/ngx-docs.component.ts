@@ -4,7 +4,6 @@ import {
   BrowserLoggerService,
   BrowserLogger,
 } from "../../services/browser-logger.service";
-import { RepositionPopupService } from "../../services/reposition-popup.service";
 
 @Component({
   selector: "app-ngx-docs",
@@ -15,7 +14,6 @@ export class NgxDocsComponent implements OnInit, OnDestroy {
   private log: BrowserLogger;
 
   constructor(
-    private repositionPopupService: RepositionPopupService,
     private browserLoggerService: BrowserLoggerService,
     private stateService: StateService
   ) {
