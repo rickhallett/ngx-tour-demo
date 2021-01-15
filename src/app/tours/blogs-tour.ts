@@ -1,3 +1,5 @@
+import * as faker from 'faker';
+
 import { TSINgxbStepOption } from "./app-tour";
 
 export const blogTourSteps: TSINgxbStepOption[] = [
@@ -11,15 +13,22 @@ export const blogTourSteps: TSINgxbStepOption[] = [
   {
     anchorId: "blog.intro",
     route: "blog",
-    content: "Blog Intro",
+    content: faker.lorem.sentence(40),
     placement: "bottom",
-    title: "angular-ui-tour",
+    title: faker.lorem.sentence(3),
   },
   {
     anchorId: "blog.content",
     route: "blog",
-    content: "Content content content",
-    placement: "bottom",
-    title: "Blog Content",
+    content: faker.lorem.paragraph(6),
+    placement: "left",
+    title: faker.lorem.sentence(3),
+  },
+  {
+    anchorId: "blog.content",
+    route: "blog",
+    content: `${faker.lorem.paragraph(6)}`,
+    placement: "top",
+    title: faker.lorem.sentence(3),
   },
 ];
