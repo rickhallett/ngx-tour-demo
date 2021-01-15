@@ -1,4 +1,14 @@
 <div class="container">
+  <div class="container">
+    <a
+      style="cursor: pointer"
+      (click)="startFormTour()"
+      class="btn btn-primary"
+      tourAnchor="start.form.tour"
+      >Start Form Demo Tour</a
+    >
+  </div>
+
   <div class="py-5 text-center">
     <img
       class="d-block mx-auto mb-4"
@@ -14,6 +24,8 @@
       attempting to submit the form without completing it.
     </p>
   </div>
+
+  
 
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
@@ -65,7 +77,7 @@
         </div>
       </form>
     </div>
-    <div class="col-md-8 order-md-1">
+    <div class="col-md-8 order-md-1" tourAnchor="form.billing">
       <h4 class="mb-3">Billing address</h4>
       <form class="needs-validation" novalidate>
         <div class="row">
@@ -81,7 +93,7 @@
             />
             <div class="invalid-feedback">Valid first name is required.</div>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="col-md-6 mb-3" tourAnchor="form.lastname">
             <label for="lastName">Last name</label>
             <input
               type="text"
@@ -95,7 +107,7 @@
           </div>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3" tourAnchor="form.username">
           <label for="username">Username</label>
           <div class="input-group">
             <div class="input-group-prepend">
@@ -114,7 +126,7 @@
           </div>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3" tourAnchor="form.email">
           <label for="email"
             >Email <span class="text-muted">(Optional)</span></label
           >
@@ -203,7 +215,7 @@
         </div>
         <hr class="mb-4" />
 
-        <h4 class="mb-3">Payment</h4>
+        <h4 class="mb-3" tourAnchor="form.payment">Payment</h4>
 
         <div class="d-block my-3">
           <div class="custom-control custom-radio">
@@ -217,7 +229,7 @@
             />
             <label class="custom-control-label" for="credit">Credit card</label>
           </div>
-          <div class="custom-control custom-radio">
+          <div class="custom-control custom-radio" tourAnchor="form.creditcard">
             <input
               id="debit"
               name="paymentMethod"

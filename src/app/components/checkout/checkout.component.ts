@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { StateService } from "../../services/state-service";
 
 @Component({
   selector: "app-checkout",
@@ -6,7 +7,13 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./checkout.component.css"],
 })
 export class CheckoutComponent implements OnInit {
-  constructor() {}
+  constructor(private stateService: StateService) {}
 
   ngOnInit() {}
+
+  startFormTour(): void {
+    this.stateService.tour.startAt(
+      this.stateService.findAnchorById("start.form.tour")
+    );
+  }
 }

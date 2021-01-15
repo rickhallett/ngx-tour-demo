@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { TourService } from "ngx-tour-ngx-bootstrap";
 
 @Injectable()
 export class StateService {
   public tour: TourService;
 
-  constructor() {
+  constructor(private router: Router) {
     console.log("State init");
   }
 
@@ -22,8 +23,10 @@ export class StateService {
     }
 
     console.error(
-      `No anchor with id '${id}' was found. Locating to first step`
+      `No anchor with id '${id}' was found`
     );
+    this.router.navigateByUrl('/not-found');
+
     return 0;
   }
 }
