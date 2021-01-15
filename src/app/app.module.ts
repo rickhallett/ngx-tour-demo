@@ -5,7 +5,12 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from "@angular/forms";
 
 import { TourNgxBootstrapModule } from "ngx-tour-ngx-bootstrap";
-import { PopoverModule, PopoverConfig, ComponentLoaderFactory, PositioningService } from "ngx-bootstrap";
+import {
+  PopoverModule,
+  PopoverConfig,
+  ComponentLoaderFactory,
+  PositioningService,
+} from "ngx-bootstrap";
 
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./components/home/home.component";
@@ -51,7 +56,7 @@ import { StateService } from "./services/state-service";
     CoverComponent,
     BlogComponent,
     NgxDocsComponent,
-    NgxBootstrapComponent
+    NgxBootstrapComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +73,7 @@ import { StateService } from "./services/state-service";
     PositioningService,
     RepositionPopupService,
     BrowserLoggerService,
-    StateService
+    StateService,
   ],
   bootstrap: [AppComponent],
 })

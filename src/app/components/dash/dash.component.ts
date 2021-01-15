@@ -7,15 +7,12 @@ import { StateService } from "../../services/state-service";
   styleUrls: ["./dash.component.css"],
 })
 export class DashComponent implements OnInit, OnDestroy {
+  constructor(private stateService: StateService) {}
 
-  constructor(private stateService: StateService) {
-
-  }
-  
   ngOnInit() {}
 
   ngOnDestroy() {
-    console.log('dash component destroyed');
+    console.log("dash component destroyed");
 
     this.stateService.tour.end();
   }

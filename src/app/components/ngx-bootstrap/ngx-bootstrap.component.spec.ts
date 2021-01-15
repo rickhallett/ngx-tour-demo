@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { NgxBootstrapComponent } from './ngx-bootstrap.component';
+import { NgxBootstrapComponent } from "./ngx-bootstrap.component";
 
-describe('NgxBootstrapComponent', () => {
+describe("NgxBootstrapComponent", () => {
   let component: NgxBootstrapComponent;
   let fixture: ComponentFixture<NgxBootstrapComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NgxBootstrapComponent ]
-    })
-    .compileComponents();
+      declarations: [NgxBootstrapComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('NgxBootstrapComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
