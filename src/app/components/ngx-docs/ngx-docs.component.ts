@@ -1,8 +1,4 @@
-import {
-  Component,
-  OnDestroy,
-  OnInit,
-} from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { StateService } from "../../services/state-service";
 import {
   BrowserLoggerService,
@@ -15,8 +11,7 @@ import { RepositionPopupService } from "../../services/reposition-popup.service"
   templateUrl: "./ngx-docs.component.html",
   styleUrls: ["./ngx-docs.component.css"],
 })
-export class NgxDocsComponent
-  implements OnInit, OnDestroy {
+export class NgxDocsComponent implements OnInit, OnDestroy {
   private log: BrowserLogger;
 
   constructor(

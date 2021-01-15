@@ -6,7 +6,6 @@ import {
   BrowserLoggerService,
 } from "../../services/browser-logger.service";
 import {
-  TSINgxbStepOption,
   TSINgxRoute,
   appTourSteps,
   appTourStartingRoute,
@@ -14,6 +13,7 @@ import {
 
 import { StateService } from "../../services/state-service";
 import { RepositionPopupService } from "../../services/reposition-popup.service";
+import { INgxbStepOption } from "ngx-tour-ngx-bootstrap/step-option.interface";
 
 @Component({
   selector: "app-home",
@@ -23,7 +23,7 @@ import { RepositionPopupService } from "../../services/reposition-popup.service"
 export class HomeComponent implements OnInit {
   private log: BrowserLogger;
 
-  private tourSteps: TSINgxbStepOption[] = appTourSteps;
+  private tourSteps: INgxbStepOption[] = appTourSteps;
   private tourRoute: TSINgxRoute = appTourStartingRoute;
 
   constructor(

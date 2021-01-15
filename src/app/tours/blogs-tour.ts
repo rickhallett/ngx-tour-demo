@@ -1,5 +1,5 @@
-import * as faker from 'faker';
-import { INgxbStepOption } from 'ngx-tour-ngx-bootstrap/step-option.interface';
+import * as faker from "faker";
+import { INgxbStepOption } from "ngx-tour-ngx-bootstrap/step-option.interface";
 
 export const blogTourSteps: INgxbStepOption[] = [
   {
