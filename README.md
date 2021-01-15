@@ -18,6 +18,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Todo
 
 1) The primary changes at this point are cosmetic; this will be best achieved once ported into production.
+2) It may be wise, given that this is an out-dated version of Angular, angular-cli, ngx-boostrap and ngx-tour, to provide some basic tests.
+3) There may be room to write some tests to ensure correct inter-op with the production code.
 
 ## Development server
 
