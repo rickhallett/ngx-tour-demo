@@ -1,6 +1,6 @@
-import { TSINgxbStepOption } from "./app-tour";
+import { INgxbStepOption } from "ngx-tour-ngx-bootstrap/step-option.interface";
 
-export const docsTourSteps: TSINgxbStepOption[] = [
+export const docsTourSteps: INgxbStepOption[] = [
   {
     anchorId: "angular-ui-tour",
     route: "docs",
@@ -59,13 +59,14 @@ export const docsTourSteps: TSINgxbStepOption[] = [
     placement: "auto",
     title: "Deals deals deals",
   },
-  {
-    anchorId: "pricing.containerClass",
-    route: "pricing",
-    content: "You can add custom container class.",
-    title: "Custom CSS Class",
-    containerClass: "custom-tour-class",
-  },
+  // TODO: this feature is not available in version 2.0.0
+  // {
+  //   anchorId: "pricing.containerClass",
+  //   route: "pricing",
+  //   content: "You can add custom container class.",
+  //   title: "Custom CSS Class",
+  //   containerClass: "custom-tour-class",
+  // },
   {
     anchorId: "config.placement.default",
     route: "docs",
