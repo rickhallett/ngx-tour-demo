@@ -1,6 +1,23 @@
-# Universalpaperclips
+# Ngx-Demo-Tour
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+
+## Summary of Work
+
+- Library chosen for compatibility with the ngx-bootstrap dependency
+- Versioned Angular, angular-cli and TypeScript to be the same or very near the versions to be used in production.
+- Custom service to ensure any tour steps do not appear out of the viewport, and there is a smooth scroll
+- The Tour is app-wide, and will always boot like this, but has been split into mini-tours for a few pages (/docs, /checkout, /blog and root). This functionality was not really provided OOTB, but it was adapted to fit the need.
+- Tour steps can be fetched by anchorId; makes the addition of tour steps fairly straightforward
+- Tour steps can be added in a modular fashion and bundled together in app-tours.ts
+
+## Known Bugs
+
+1) Elements at the top of the page cannot be toured as position 'top'. This will partially render off screen. There is no real need to alter this.
+
+## Todo
+
+1) The primary changes at this point are cosmetic; this will be best achieved once ported into production.
 
 ## Development server
 
@@ -12,7 +29,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `docs/` directory. Use the `-prod` flag for a production build.
 
 ## Running unit tests
 
