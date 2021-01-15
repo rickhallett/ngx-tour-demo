@@ -27,6 +27,8 @@ export class NgxDocsComponent implements OnInit, OnDestroy {
   }
 
   startDocsTour(): void {
-    this.stateService.tour.startAt(2);
+    this.stateService.tour.startAt(
+      this.stateService.findAnchorById('start.docs.tour')
+    );
   }
 }

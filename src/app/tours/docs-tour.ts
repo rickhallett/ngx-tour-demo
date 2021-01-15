@@ -1,6 +1,14 @@
 import { INgxbStepOption } from "ngx-tour-ngx-bootstrap/step-option.interface";
+import * as faker from 'faker';
 
 export const docsTourSteps: INgxbStepOption[] = [
+  {
+    anchorId: "start.docs.tour",
+    route: "docs",
+    content: "Welcome to the Docs Tour!",
+    placement: "right",
+    title: "Good day, Sir",
+  },
   {
     anchorId: "angular-ui-tour",
     route: "docs",
@@ -11,53 +19,52 @@ export const docsTourSteps: INgxbStepOption[] = [
   {
     anchorId: "usage",
     route: "docs",
-    content: "Energy management is everything",
-    placement: "bottom",
-    title: "Empty your cup",
+    content: faker.lorem.sentence(20),
+    placement: "left",
+    title: faker.lorem.sentence(5),
   },
   {
     anchorId: "docs.tourService",
     route: "docs",
-    content: "We show the way, you just pay",
+    content: faker.lorem.sentence(20),
     placement: "bottom",
-    title: "Generally renders half way off screen",
+    title: faker.lorem.sentence(5),
   },
   {
     anchorId: "docs.defaults",
     route: "docs",
     content:
-      "And scroll all the way down (if placement == left, this will scroll but be partially off screen",
-    placement: "left",
-    title: "If set to bottom, this renders completely off screen",
+    faker.lorem.sentence(20),
+    placement: "top",
+    title: faker.lorem.sentence(5),
   },
   {
     anchorId: "installation",
     route: "docs",
     content:
-      "And scroll all the way back up...(if placement == top, this will be completely off screen)",
-    title: "This will scroll up, and render on screen, if placement == bottom",
+    faker.lorem.sentence(20),
+    title: faker.lorem.sentence(5),
     placement: "top",
   },
   {
     anchorId: "dash.shipments",
     route: "dash",
-    content: "We provide both ethical and unethical shipments globaally",
+    content: faker.lorem.sentence(20),
     title: "Route Return",
   },
   {
     anchorId: "docs.tourService",
     route: "docs",
-    content: "controls the tour",
+    content: faker.lorem.sentence(20),
     placement: "auto",
     title: "notifications",
   },
   {
     anchorId: "pricing.title",
     route: "pricing",
-    content:
-      "Buy anything you like at extortionate prices (we are not here for you benefit)",
+    content: faker.lorem.sentence(20),
     placement: "auto",
-    title: "Deals deals deals",
+    title: faker.lorem.sentence(5),
   },
   // TODO: this feature is not available in version 2.0.0
   // {
