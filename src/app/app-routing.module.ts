@@ -54,6 +54,11 @@ const routes: Routes = [
         path: "docs",
         component: NgxDocsComponent,
       },
+      {
+        path: "ngx-tour-demo",
+        redirectTo: "/ngx-tour-demo/dash",
+        pathMatch: "full",
+      },
     ],
   },
   {
