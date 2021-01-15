@@ -20,9 +20,6 @@ export class ChartComponent implements OnInit, AfterContentInit {
   ngOnInit() {}
 
   ngAfterContentInit(): void {
-    //Called after ngOnInit when the component's or directive's content has been initialized.
-    //Add 'implements AfterContentInit' to the class.
-
     const canvas = <HTMLCanvasElement>this.canvas.nativeElement;
     let ctx: CanvasRenderingContext2D = canvas.getContext("2d");
 

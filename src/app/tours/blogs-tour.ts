@@ -1,8 +1,7 @@
 import * as faker from 'faker';
+import { INgxbStepOption } from 'ngx-tour-ngx-bootstrap/step-option.interface';
 
-import { TSINgxbStepOption } from "./app-tour";
-
-export const blogTourSteps: TSINgxbStepOption[] = [
+export const blogTourSteps: INgxbStepOption[] = [
   {
     anchorId: "start.blog.tour",
     route: "blog",

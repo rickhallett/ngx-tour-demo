@@ -1,11 +1,8 @@
 import {
-  AfterViewChecked,
-  AfterViewInit,
   Component,
   OnDestroy,
   OnInit,
 } from "@angular/core";
-import { TourService, IStepOption } from "ngx-tour-ngx-bootstrap";
 import { StateService } from "../../services/state-service";
 import {
   BrowserLoggerService,
@@ -19,7 +16,7 @@ import { RepositionPopupService } from "../../services/reposition-popup.service"
   styleUrls: ["./ngx-docs.component.css"],
 })
 export class NgxDocsComponent
-  implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
+  implements OnInit, OnDestroy {
   private log: BrowserLogger;
 
   constructor(
@@ -30,18 +27,7 @@ export class NgxDocsComponent
     this.log = browserLoggerService.createLog("NgxDocsComponent", "green");
   }
 
-  ngOnInit(): void {
-    this.log("ngOnInit");
-  }
-
-  ngAfterViewInit(): void {
-    this.log("ngAfterViewInit");
-  }
-
-  ngAfterViewChecked(): void {
-    this.log("ngAfterViewChecked");
-    this.log("state:", this.stateService);
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.stateService.tour.end();

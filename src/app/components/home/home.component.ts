@@ -1,8 +1,6 @@
-import { Component, Inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
-
 import { IStepOption, TourService } from "ngx-tour-ngx-bootstrap";
-import { INgxbStepOption } from "ngx-tour-ngx-bootstrap/step-option.interface";
 import {
   BrowserLogger,
   BrowserLoggerService,
@@ -13,6 +11,7 @@ import {
   appTourSteps,
   appTourStartingRoute,
 } from "../../tours/app-tour";
+
 import { StateService } from "../../services/state-service";
 import { RepositionPopupService } from "../../services/reposition-popup.service";
 
@@ -62,8 +61,6 @@ export class HomeComponent implements OnInit {
     this.tourService.stepShow$.subscribe((step: IStepOption) => {
       this.log("step changed, scrolling to view...");
 
-      // HACK ALERT - this forces the call back to be placed onto the event queue
-      // without it, it won't play with angulars own render cycles
       setTimeout(() => {
         this.repositionPopupService.scrollIntoViewIfNeeded();
       }, 0);

@@ -9,11 +9,9 @@ import { StateService } from "../../services/state-service";
 export class DashComponent implements OnInit, OnDestroy {
   constructor(private stateService: StateService) {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
   ngOnDestroy() {
-    console.log("dash component destroyed");
-
     this.stateService.tour.end();
   }
 

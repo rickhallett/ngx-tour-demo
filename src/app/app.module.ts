@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from "@angular/forms";
+import { Router } from "@angular/router";
 
 import { TourNgxBootstrapModule } from "ngx-tour-ngx-bootstrap";
 import {
@@ -15,9 +16,7 @@ import {
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./components/home/home.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
-import { SimpleFormComponent } from "./components/simple-form/simple-form.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { Router } from "@angular/router";
 import { ChartComponent } from "./components/chart/chart.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { DashComponent } from "./components/dash/dash.component";
@@ -28,9 +27,7 @@ import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { PricingComponent } from "./components/pricing/pricing.component";
 import { AlbumComponent } from "./components/album/album.component";
 import { CheckoutComponent } from "./components/checkout/checkout.component";
-import { CoverComponent } from "./components/cover/cover.component";
 import { BlogComponent } from "./components/blog/blog.component";
-import { NgxBootstrapComponent } from "./components/ngx-bootstrap/ngx-bootstrap.component";
 import { NgxDocsComponent } from "./components/ngx-docs/ngx-docs.component";
 
 import { RepositionPopupService } from "./services/reposition-popup.service";
@@ -42,7 +39,6 @@ import { StateService } from "./services/state-service";
     AppComponent,
     HomeComponent,
     SidebarComponent,
-    SimpleFormComponent,
     ChartComponent,
     NavbarComponent,
     DashComponent,
@@ -53,10 +49,8 @@ import { StateService } from "./services/state-service";
     PricingComponent,
     AlbumComponent,
     CheckoutComponent,
-    CoverComponent,
     BlogComponent,
     NgxDocsComponent,
-    NgxBootstrapComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +73,6 @@ import { StateService } from "./services/state-service";
 })
 export class AppModule {
   constructor(router: Router) {
-    console.log("Routes: ", JSON.stringify(router.config, null, 8));
+    // console.log("Routes: ", JSON.stringify(router.config, null, 8));
   }
 }
