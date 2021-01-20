@@ -37,6 +37,7 @@ import { TrumpBrowserComponent } from './components/trump-detection/trump-browse
 import { KeyCodesComponent } from './components/trump-detection/key-codes/key-codes.component';
 import { TrumpsRulesComponent } from './components/trump-detection/trumps-rules/trumps-rules.component';
 import { TrumpDetectionComponent } from "./components/trump-detection/trump-detection.component";
+import { TrumpsRulesItemComponent } from './components/trump-detection/trumps-rules-item/trumps-rules-item.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { TrumpDetectionComponent } from "./components/trump-detection/trump-dete
     TrumpBrowserComponent,
     KeyCodesComponent,
     TrumpsRulesComponent,
+    TrumpsRulesItemComponent,
   ],
   imports: [
     BrowserModule,
