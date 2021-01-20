@@ -12,6 +12,12 @@ import { NgxDocsComponent } from "./components/ngx-docs/ngx-docs.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { OrdersComponent } from "./components/order/order.component";
 import { PricingComponent } from "./components/pricing/pricing.component";
+import { TrumpDetectionComponent } from "./components/trump-detection/trump-detection.component";
+import { TrumpAlertsComponent } from "./components/trump-detection/trump-alerts/trump-alerts.component";
+import { TrumpBrowserComponent } from "./components/trump-detection/trump-browser/trump-browser.component";
+import { KeyCodesComponent } from "./components/trump-detection/key-codes/key-codes.component";
+import { componentFactoryName } from "@angular/compiler";
+import { TrumpsRulesComponent } from "./components/trump-detection/trumps-rules/trumps-rules.component";
 
 const routes: Routes = [
   {
@@ -59,6 +65,28 @@ const routes: Routes = [
         redirectTo: "https://rickhallett.github.io/ngx-tour-demo/dash",
         pathMatch: "full",
       },
+      {
+        path: "trump-detection",
+        component: TrumpDetectionComponent,
+        children: [
+          {
+            path: "trump-alerts",
+            component: TrumpAlertsComponent
+          },
+          {
+            path: "trump-browser",
+            component: TrumpBrowserComponent
+          },
+          {
+            path: "nuclear-key-codes",
+            component: KeyCodesComponent
+          },
+          {
+            path: "trumps-rules",
+            component: TrumpsRulesComponent
+          }
+        ]
+      }
     ],
   },
   {

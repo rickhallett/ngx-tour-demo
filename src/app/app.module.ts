@@ -32,6 +32,11 @@ import { NgxDocsComponent } from "./components/ngx-docs/ngx-docs.component";
 import { RepositionPopupService } from "./services/reposition-popup.service";
 import { BrowserLoggerService } from "./services/browser-logger.service";
 import { StateService } from "./services/state-service";
+import { TrumpAlertsComponent } from './components/trump-detection/trump-alerts/trump-alerts.component';
+import { TrumpBrowserComponent } from './components/trump-detection/trump-browser/trump-browser.component';
+import { KeyCodesComponent } from './components/trump-detection/key-codes/key-codes.component';
+import { TrumpsRulesComponent } from './components/trump-detection/trumps-rules/trumps-rules.component';
+import { TrumpDetectionComponent } from "./components/trump-detection/trump-detection.component";
 
 @NgModule({
   declarations: [
@@ -49,6 +54,12 @@ import { StateService } from "./services/state-service";
     CheckoutComponent,
     BlogComponent,
     NgxDocsComponent,
+    TrumpDetectionComponent,
+    TrumpAlertsComponent,
+    TrumpBrowserComponent,
+    TrumpBrowserComponent,
+    KeyCodesComponent,
+    TrumpsRulesComponent,
   ],
   imports: [
     BrowserModule,

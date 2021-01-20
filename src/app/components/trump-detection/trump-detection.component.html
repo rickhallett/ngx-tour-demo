@@ -1,0 +1,25 @@
+<div>
+  <h1>Official Trump Detector</h1>
+  <div>
+    <ul class="nav">
+      <li class="nav-item">
+        <a [routerLink]="['./trump-alerts']" routerLinkActive="active" class="nav-link">Trump Alert!</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['./trump-browser']" routerLinkActive="active" class="nav-link">Trump Browser</a>
+      </li>
+      <ng-container *ngIf="true">
+        <li class="nav-item">
+          <a [routerLink]="['./nuclear-key-codes']" routerLinkActive="active" class="nav-link">Nuclear Key Codes</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['./trumps-rules']" routerLinkActive="active" class="nav-link">Trump's Rules</a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+
+  <div class="main-panel">
+    <router-outlet></router-outlet>
+  </div>
+</div>
