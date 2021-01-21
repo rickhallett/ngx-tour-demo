@@ -99,10 +99,8 @@ export class TrumpsRulesComponent implements OnInit, AfterViewInit {
       console.log(event.name, event.value);
     });
 
+    // NB: this subscribe has next, error and complete callbacks available if neccessary
     this.stateService.tour.stepShow$.subscribe(async (step: IStepOption) => {
-      // return;
-      
-      console.count('stepShow$');
       console.log("next step:", step.nextStep);
 
       // guard against this observable firing before everything is initialised
@@ -130,19 +128,20 @@ export class TrumpsRulesComponent implements OnInit, AfterViewInit {
 
         // fire the trigger
         console.log("clicking button...");
-        console.count('trigger');
-        trigger.click(); // presumably this is async...?
-
-        // await this.clickAsync(trigger);
-
-        setTimeout(() => {
-          // re-load tour and re-render the same step
-          // this.stateService.tour.startAt(
-          //   this.stateService.findAnchorById(step.anchorId as string)
-          // );
-        }, 1000);
-        
+        trigger.click(); 
       }
+    });
+
+    this.stateService.tour.end$.subscribe(() => {
+      const trumpSteps = this.stateService.tour.steps.filter(step => step.anchorId.includes('trump'));
+      const trumpStepBtns = trumpSteps.map(step => step.anchorId + '.btn');
+
+      trumpStepBtns.forEach(selector => {
+        const btn = document.getElementById(selector);
+        if (btn) {
+          btn.click();
+        }
+      });
     });
   }
 

@@ -10,6 +10,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - The Tour is app-wide, and will always boot like this, but has been split into mini-tours for a few pages (/docs, /checkout, /blog and root). This functionality was not really provided OOTB, but it was adapted to fit the need.
 - Tour steps can be fetched by anchorId; makes the addition of tour steps fairly straightforward
 - Tour steps can be added in a modular fashion and bundled together in app-tours.ts
+- Tour steps can be configured to look ahead for currently hidden DOM elements (e.g. in complex forms), and virtually click the button to show this DOM element before stepping to it.
 
 ## Known Bugs
 
