@@ -128,7 +128,9 @@ export class TrumpsRulesComponent implements OnInit, AfterViewInit {
 
         // fire the trigger
         console.log("clicking button...");
-        trigger.click(); 
+        trigger.click();
+
+        trigger.setAttribute('tour-clicked', 'true');
       }
     });
 
@@ -138,7 +140,8 @@ export class TrumpsRulesComponent implements OnInit, AfterViewInit {
 
       trumpStepBtns.forEach(selector => {
         const btn = document.getElementById(selector);
-        if (btn) {
+        if (btn && btn.getAttribute('tour-clicked')) {
+          console.log('found a clicked button - unclick that mfka');
           btn.click();
         }
       });
