@@ -4,20 +4,20 @@
   </fieldset>
   <div class="border p-1" style="max-width: 800px;">
     
-    <ng-container *ngFor="let contact of contacts" style="margin-bottom: 5px">
+    <ng-container *ngFor="let contact of contacts; let i = index" style="margin-bottom: 5px">
       <div class="row">
         <div class="col-10">
           <input id="contactname" class="form-control" [value]="contact.name">
         </div>
         <div class="col-1">
-          <button class="btn btn-xs btn-secondary" (click)="contact.edit = !contact.edit">Edit</button>
+          <button class="btn btn-xs btn-secondary" (click)="activeContact = i">Edit</button>
         </div>
         <div class="col-1">
           <button class="btn btn-xs btn-secondary">Delete</button>
         </div>
       </div>
 
-      <ng-container *ngIf="contact.edit">
+      <ng-container *ngIf="activeContact === i">
         <app-trumps-rules-item-contacts-item [contact]="contact"></app-trumps-rules-item-contacts-item>
       </ng-container>
 

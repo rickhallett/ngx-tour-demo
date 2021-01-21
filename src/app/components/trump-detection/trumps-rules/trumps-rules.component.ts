@@ -42,6 +42,8 @@ export class TrumpsRulesComponent implements OnInit, AfterViewInit {
     { rule: 'No friends', edit: false, contacts: newContacts() },
   ]
 
+  public activeIndex: number = null;
+
   constructor() { }
 
   ngOnInit() {

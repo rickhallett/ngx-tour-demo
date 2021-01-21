@@ -12,6 +12,8 @@ export class TrumpsRulesItemContactsComponent implements OnInit {
     ice: string
   }
 
+  public activeContact: number = null;
+
   constructor() { }
 
   ngOnInit() {
