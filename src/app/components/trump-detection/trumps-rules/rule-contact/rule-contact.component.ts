@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Contact } from '../trumps-rules.component';
 
 @Component({
@@ -6,12 +6,17 @@ import { Contact } from '../trumps-rules.component';
   templateUrl: './rule-contact.component.html',
   styleUrls: ['./rule-contact.component.css']
 })
-export class TrumpsRulesItemContactsItemComponent implements OnInit {
+export class RuleContactComponent implements OnInit {
   @Input('contact') contact: Contact;
+  @Output('close') close: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  closeEditContact() {
+    this.close.emit('close-contact-edit');
   }
 
 }

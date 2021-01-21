@@ -2,30 +2,41 @@
   <fieldset>
     <legend>Contacts</legend>
   </fieldset>
-  <div class="border p-1" style="max-width: 800px;">
-    
-    <ng-container *ngFor="let contact of contacts; let i = index" style="margin-bottom: 5px">
-      <div class="row">
-        <div class="col-10">
-          <input id="contactname" class="form-control" [value]="contact.name">
+  <div class="border p-1" style="max-width: 900px">
+    <button class="btn btn-outline-primary m-3" (click)="newContact()" disabled>
+      New Contact
+    </button>
+
+    <ng-container *ngFor="let contact of contacts; let i = index">
+      <div class="row mb-1">
+        <div class="col-9">
+          <input id="contactname" class="form-control" [value]="contact.name" />
         </div>
         <div class="col-1">
-          <button class="btn btn-xs btn-secondary" (click)="activeContact = i">Edit</button>
+          <button
+            class="btn btn-xs btn-secondary"
+            (click)="
+              activeContact === i ? (activeContact = null) : (activeContact = i)
+            "
+            (close-contact-edit)="activeContact = null"
+          >
+            Edit
+          </button>
         </div>
         <div class="col-1">
-          <button class="btn btn-xs btn-secondary">Delete</button>
+          <button class="btn btn-xs btn-dark">Delete</button>
         </div>
       </div>
 
       <ng-container *ngIf="activeContact === i">
-        <rule-contact [contact]="contact"></rule-contact>
+        <rule-contact [contact]="contact" (close)="onClose()"></rule-contact>
       </ng-container>
-
     </ng-container>
 
-    
-    
+    <div class="mx-3 my-5">
+      <button class="btn btn-outline-primary">Update</button>
+      <button class="btn btn-outline-secondary">Revert</button>
+      <button class="btn btn-outline-danger" (click)="onCancel()">Cancel</button>
+    </div>
   </div>
-  
 </form>
-

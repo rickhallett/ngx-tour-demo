@@ -3,7 +3,7 @@
     <p class="text-secondary">Configure rules for trump_ware2021.py</p>
 
     <div>
-      <button (click)="onNewRule()" class="btn btn-secondary">New</button>
+      <button (click)="onNewRule()" class="btn btn-dark">New</button>
       <button (click)="onSave()" class="btn btn-secondary">Save</button>
       <button (click)="onCancel()" class="btn btn-secondary">Cancel</button>
     </div>
@@ -18,14 +18,14 @@
             
 
             <div class="controls">
-              <button class="btn btn-secondary ml-5" (click)="activeIndex = i">Edit</button>
-              <button class="btn btn-secondary ml-5">Delete</button>
+              <button class="btn btn-secondary ml-5" (click)="activeIndex === i ? activeIndex = null : activeIndex = i">Edit</button>
+              <button class="btn btn-dark ml-5">Delete</button>
             </div>
           </div>
 
           <!-- Can this be an ng-container as well? -->
           <div *ngIf="activeIndex === i">
-            <rules-item class="ma-2" [item]="item"></rules-item>
+            <rules-item class="ma-2" [item]="item" (passUpCancelEvent)="activeIndex = null"></rules-item>
           </div>
 
         </ng-container>

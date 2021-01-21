@@ -1,24 +1,25 @@
 <form class="m-3">
   <fieldset>
     <legend><small class="text-muted">Edit Contact</small></legend>
-    
   </fieldset>
 
   <div class="controls">
-    <div class="form-control">
+    <div class="form-control mb-1">
       <label for="name">Name</label>
       <input id="name" type="text" [value]="contact.name" class="form-control">
     </div>
 
-    <div class="form-control">
+    <div class="form-control mb-1">
       <label for="name">Tel</label>
       <input type="text" [value]="contact.tel" class="form-control">
     </div>
 
-    <div class="form-control">
+    <div class="form-control mb-1">
       <label for="name">ICE</label>
       <input type="text" [value]="contact.ice" class="form-control">
     </div>
     
   </div>
+
+  <button class="btn btn-outline-warning mt-2" (click)="closeEditContact()">Close</button>
 </form>

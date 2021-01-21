@@ -10,7 +10,7 @@ export type Contact = {
   edit: boolean
 }
 
-const newContact = () => {
+export const newContact = () => {
   return {
     name: `${faker.name.title()}. ${faker.name.firstName()} ${faker.name.lastName()}`,
     tel: faker.phone.phoneNumber().toString(),

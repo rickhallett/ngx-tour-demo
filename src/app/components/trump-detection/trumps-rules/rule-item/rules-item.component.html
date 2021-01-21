@@ -19,5 +19,5 @@
     </div>
   </div>
 
-  <rule-contacts [contacts]="item.contacts" style="margin-top: 5px;"></rule-contacts>
+  <rule-contacts [contacts]="item.contacts" style="margin-top: 5px;" (createNew)="onCreateNew($event)" (cancelEdit)="cancelEdit()"></rule-contacts>
 </form>

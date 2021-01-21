@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 
 @Component({
   selector: 'rules-item',
@@ -12,9 +13,20 @@ export class TrumpsRulesItemComponent implements OnInit {
     ice: string
   }] };
 
+  // @Output('createNew') createNew: EventEmitter<any> = new EventEmitter();
+  @Output() passUpCancelEvent: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onCreateNew($event) {
+    // this.createNew.emit();
+  }
+
+  cancelEdit() {
+    this.passUpCancelEvent.emit();
   }
 
 }
