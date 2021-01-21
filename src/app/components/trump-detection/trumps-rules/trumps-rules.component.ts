@@ -3,17 +3,19 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import * as faker from 'faker';
 
-const stdContact = {
-  name: 'Contact',
-  tel: '037823289349',
-  ice: 'Erase'
+export type Contact = {
+  name: string,
+  tel: string,
+  ice: string
+  edit: boolean
 }
 
 const newContact = () => {
   return {
     name: `${faker.name.title()}. ${faker.name.firstName()} ${faker.name.lastName()}`,
-    tel: faker.phone.phoneNumber.toString(),
-    ice: faker.hacker.phrase()
+    tel: faker.phone.phoneNumber().toString(),
+    ice: faker.hacker.phrase(),
+    edit: false
   }
 }
 

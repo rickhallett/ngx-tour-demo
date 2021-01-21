@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Contact } from '../trumps-rules/trumps-rules.component';
 
 @Component({
   selector: 'app-trumps-rules-item-contacts-item',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trumps-rules-item-contacts-item.component.css']
 })
 export class TrumpsRulesItemContactsItemComponent implements OnInit {
+  @Input('contact') contact: Contact;
 
   constructor() { }
 

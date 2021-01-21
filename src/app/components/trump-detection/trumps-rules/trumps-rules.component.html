@@ -1,11 +1,11 @@
 <div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <p>Configure rules for TrumpWare2021</p>
+    <p class="text-secondary">Configure rules for trump_ware2021.py</p>
 
     <div>
-      <button (click)="onNewRule()" class="btn btn-primary">New</button>
+      <button (click)="onNewRule()" class="btn btn-secondary">New</button>
       <button (click)="onSave()" class="btn btn-secondary">Save</button>
-      <button (click)="onCancel()" class="btn btn-danger">Cancel</button>
+      <button (click)="onCancel()" class="btn btn-secondary">Cancel</button>
     </div>
 
     <div class="mt-5">
@@ -18,8 +18,8 @@
             
 
             <div class="controls">
-              <button class="btn btn-warning ml-5" (click)="item.edit = !item.edit">Edit</button>
-              <button class="btn btn-danger ml-5">Delete</button>
+              <button class="btn btn-secondary ml-5" (click)="item.edit = !item.edit">Edit</button>
+              <button class="btn btn-secondary ml-5">Delete</button>
             </div>
           </div>
 
