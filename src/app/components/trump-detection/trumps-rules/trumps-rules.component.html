@@ -25,7 +25,7 @@
 
           <!-- Can this be an ng-container as well? -->
           <div *ngIf="item.edit">
-            <app-trumps-rules-item class="ma-2"></app-trumps-rules-item>
+            <app-trumps-rules-item class="ma-2" [item]="item"></app-trumps-rules-item>
           </div>
 
         </ng-container>

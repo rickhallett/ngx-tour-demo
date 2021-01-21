@@ -38,6 +38,8 @@ import { KeyCodesComponent } from './components/trump-detection/key-codes/key-co
 import { TrumpsRulesComponent } from './components/trump-detection/trumps-rules/trumps-rules.component';
 import { TrumpDetectionComponent } from "./components/trump-detection/trump-detection.component";
 import { TrumpsRulesItemComponent } from './components/trump-detection/trumps-rules-item/trumps-rules-item.component';
+import { TrumpsRulesItemContactsComponent } from './components/trump-detection/trumps-rules-item-contacts/trumps-rules-item-contacts.component';
+import { TrumpsRulesItemContactsItemComponent } from './components/trump-detection/trumps-rules-item-contacts-item/trumps-rules-item-contacts-item.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { TrumpsRulesItemComponent } from './components/trump-detection/trumps-ru
     KeyCodesComponent,
     TrumpsRulesComponent,
     TrumpsRulesItemComponent,
+    TrumpsRulesItemContactsComponent,
+    TrumpsRulesItemContactsItemComponent,
   ],
   imports: [
     BrowserModule,

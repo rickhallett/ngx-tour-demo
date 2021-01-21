@@ -1,0 +1,20 @@
+<form class="form-group" class="mt-3">
+  <fieldset>
+    <legend>Contacts</legend>
+  </fieldset>
+  <div class="border p-1" style="max-width: 800px;">
+    <div class="row" *ngFor="let contact of contacts" style="margin-bottom: 5px">
+      <div class="col-10">
+        <input id="contactname" class="form-control" [value]="contact.name">
+      </div>
+      <div class="col-1">
+        <button class="btn btn-xs btn-warning">Edit</button>
+      </div>
+      <div class="col-1">
+        <button class="btn btn-xs btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+  
+</form>
+

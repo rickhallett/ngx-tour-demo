@@ -1,3 +1,23 @@
-<p>
-  trumps-rules-item works!
-</p>
+<form class="mt-2 mb-5">
+  <fieldset>
+    <legend>Edit Rule</legend>
+  </fieldset>
+
+  <div class="row">
+    <div class="col-4">
+      <label for="rulename">Rule name</label>
+      <input id="rulename" class="form-control" [value]="item.rule">
+    </div>
+
+    <div class="col-4">
+      <label for="ruletype">Rule type</label>
+      <select class="form-control">
+        <option value="handslap">Hand Slap</option>
+        <option value="facepunch">Face Punch</option>
+        <option value="impeachment">Impeachment</option>
+      </select>
+    </div>
+  </div>
+
+  <app-trumps-rules-item-contacts [contacts]="item.contacts" style="margin-top: 5px;"></app-trumps-rules-item-contacts>
+</form>
