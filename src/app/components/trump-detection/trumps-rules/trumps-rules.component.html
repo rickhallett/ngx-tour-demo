@@ -1,6 +1,28 @@
 <div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <p class="text-secondary">Configure rules for trump_ware2021.py</p>
+    <pre class=" bg-dark p-4" style="color: limegreen; width: 100%">
+      Configure rules for trump_ware2021.py
+    
+      def timeToGo():
+        exit()
+
+      main():
+        timeToGo()
+
+      if __name__ == "__main__"
+        main()
+
+      > <span style="color: red;">Fatal Python error: initfsencoding: unable to load viable leader</span>
+    </pre>
+
+    <a
+      style="cursor: pointer"
+      (click)="startTrumpTour()"
+      class="btn btn-secondary m-2 mb-5"
+      tourAnchor="start.trump.tour"
+      id="start.trump.tour"
+      >Start Demo Application Tour</a
+    >
 
     <div>
       <button (click)="onNewRule()" class="btn btn-dark">New</button>
@@ -18,7 +40,7 @@
             
 
             <div class="controls">
-              <button class="btn btn-secondary ml-5" (click)="activeIndex === i ? activeIndex = null : activeIndex = i">Edit</button>
+              <button class="btn btn-secondary ml-5" id="trump.rule.name.btn" (click)="activeIndex === i ? activeIndex = null : activeIndex = i">Edit</button>
               <button class="btn btn-dark ml-5">Delete</button>
             </div>
           </div>

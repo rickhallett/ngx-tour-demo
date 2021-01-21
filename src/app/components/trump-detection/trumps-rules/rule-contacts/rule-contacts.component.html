@@ -3,7 +3,7 @@
     <legend>Contacts</legend>
   </fieldset>
   <div class="border p-1" style="max-width: 900px">
-    <button class="btn btn-outline-primary m-3" (click)="newContact()" disabled>
+    <button class="btn btn-outline-primary m-3" (click)="newContact()" disabled tourAnchor="trump.contact.new">
       New Contact
     </button>
 
@@ -19,6 +19,7 @@
               activeContact === i ? (activeContact = null) : (activeContact = i)
             "
             (close-contact-edit)="activeContact = null"
+            id="trump.contact.edit.btn"
           >
             Edit
           </button>

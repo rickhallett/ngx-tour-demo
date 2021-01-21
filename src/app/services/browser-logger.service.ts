@@ -12,10 +12,20 @@ export class BrowserLoggerService {
       n++;
       const err: string = `${name} log: ${new Date().toISOString()}-LOG-#${n} => ${msg}`;
       const log: string = ` %c${name} log:${new Date().toISOString()}-LOG-#${n} => ${msg}`;
-      const colorStyle: string = `${color ? "color:" + color : ""}`;
+      const colorStyle: string = `${color ? "color:" + color : "white"}`;
 
       if (msg instanceof Error) {
         console.error(err, obj);
+        return;
+      }
+
+      if (typeof obj === 'number') {
+        console.log(log, colorStyle, obj);
+        return;
+      }
+
+      if (typeof obj === 'string') {
+        console.log(log, colorStyle, obj);
         return;
       }
 

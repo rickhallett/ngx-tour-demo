@@ -4,6 +4,7 @@ import { dashTourSteps } from "./dash-tour";
 
 import { docsTourSteps } from "./docs-tour";
 import { formTourSteps } from "./form-tour";
+import { trumpTourSteps } from "./trump-tour";
 
 // TODO: feature not available in v2.0.0
 // export interface TSINgxbStepOption extends INgxbStepOption {
@@ -22,5 +23,6 @@ export const appTourSteps: INgxbStepOption[] = [
   ...dashTourSteps,
   ...docsTourSteps,
   ...blogTourSteps,
-  ...formTourSteps
+  ...formTourSteps,
+  ...trumpTourSteps
 ];

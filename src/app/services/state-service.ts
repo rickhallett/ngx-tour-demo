@@ -1,13 +1,16 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { TourService } from "ngx-tour-ngx-bootstrap";
+import { BrowserLogger, BrowserLoggerService } from "./browser-logger.service";
 
 @Injectable()
 export class StateService {
   public tour: TourService;
+  private log: BrowserLogger;
 
-  constructor(private router: Router) {
-    console.log("State init");
+  constructor(private router: Router, private browserLoggerService: BrowserLoggerService) {
+    this.log = browserLoggerService.createLog('StateService', 'limegreen');
+    this.log("State init");
   }
 
   setTour(tour: TourService): void {
@@ -18,11 +21,11 @@ export class StateService {
     const step = this.tour.steps.findIndex((step) => step.anchorId === id);
 
     if (step !== -1) {
-      console.log("step", step);
+      this.log("step found with id:", step);
       return step;
     }
 
-    console.error(
+    this.log(
       `No anchor with id '${id}' was found`
     );
     this.router.navigateByUrl('/not-found');
