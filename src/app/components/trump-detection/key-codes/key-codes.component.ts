@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-key-codes',
+  selector: 'key-codes',
   templateUrl: './key-codes.component.html',
   styleUrls: ['./key-codes.component.css']
 })

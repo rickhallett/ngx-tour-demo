@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TrumpsRulesItemContactsComponent } from './trumps-rules-item-contacts.component';
+import { TrumpsRulesItemContactsComponent } from './rule-contacts.component';
 
 describe('TrumpsRulesItemContactsComponent', () => {
   let component: TrumpsRulesItemContactsComponent;

@@ -37,9 +37,9 @@ import { TrumpBrowserComponent } from './components/trump-detection/trump-browse
 import { KeyCodesComponent } from './components/trump-detection/key-codes/key-codes.component';
 import { TrumpsRulesComponent } from './components/trump-detection/trumps-rules/trumps-rules.component';
 import { TrumpDetectionComponent } from "./components/trump-detection/trump-detection.component";
-import { TrumpsRulesItemComponent } from './components/trump-detection/trumps-rules-item/trumps-rules-item.component';
-import { TrumpsRulesItemContactsComponent } from './components/trump-detection/trumps-rules-item-contacts/trumps-rules-item-contacts.component';
-import { TrumpsRulesItemContactsItemComponent } from './components/trump-detection/trumps-rules-item-contacts-item/trumps-rules-item-contacts-item.component';
+import { TrumpsRulesItemComponent } from './components/trump-detection/trumps-rules/rule-item/rules-item.component';
+import { TrumpsRulesItemContactsComponent } from './components/trump-detection/trumps-rules/rule-contacts/rule-contacts.component';
+import { TrumpsRulesItemContactsItemComponent } from './components/trump-detection/trumps-rules/rule-contact/rule-contact.component';
 
 @NgModule({
   declarations: [
